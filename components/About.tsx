@@ -81,7 +81,7 @@ export default function About() {
             className="w-full h-full object-cover brightness-95 object-center group-hover:scale-102 transition-transform duration-700 ease-out" 
             loading="lazy"
             decoding="async"
-            onError={(e)=>{e.currentTarget.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600'}}
+            onError={(e)=>{e.currentTarget.src='/owner.jpg'}}
           />
         </m.div>
 
