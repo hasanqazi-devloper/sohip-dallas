@@ -24,10 +24,11 @@ export default function Navbar({ isScrolled, isMenuOpen, setIsMenuOpen }: Navbar
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-[100] transition-all duration-500 transform-gpu">
+      {/* ✅ Fixed Stacking Order Engine: z-[9999] guarantees it overlays perfectly on all subpages */}
+      <header className="fixed top-0 left-0 w-full z-[9999] transition-all duration-500 transform-gpu pointer-events-auto">
         
         {/* UPPER INFO RIBBON - Seamlessly transitions height matrices */}
-        <div className={`w-full bg-[#050505] text-[10px] tracking-[0.2em] uppercase text-white/50 border-b border-white/5 px-6 md:px-24 flex justify-between items-center transition-all duration-500 origin-top overflow-hidden ${isScrolled ? 'h-0 py-0 opacity-0 pointer-events-none border-none' : 'h-auto py-2.5'}`}>
+        <div className={`w-full bg-[#050505] text-[10px] tracking-[0.2em] uppercase text-white/50  px-6 md:px-24 flex justify-between items-center transition-all duration-500 origin-top overflow-hidden ${isScrolled ? 'h-0 py-0 opacity-0 pointer-events-none border-none' : 'h-auto py-2.5'}`}>
           <div className="flex gap-6 items-center">
             <span className="flex items-center gap-1.5 font-medium text-white/70 hover:text-white transition-colors cursor-pointer"><Phone size={11} className="text-[#C9A050]"/> (214) 428-1121</span>
             <span className="hidden sm:inline opacity-20 text-white">|</span>
@@ -39,8 +40,8 @@ export default function Navbar({ isScrolled, isMenuOpen, setIsMenuOpen }: Navbar
         </div>
 
         {/* MAIN INTERACTIVE NAV */}
-        {/* ✅ White border line completely wiped out on scroll, replaced with clean soft premium shadow */}
-        <div className={`w-full flex justify-between items-center px-6 md:px-24 transition-all duration-500 ${isScrolled ? 'bg-[#0D0D0D]/95 backdrop-blur-md py-4 shadow-[0_15px_40px_rgba(0,0,0,0.6)]' : 'bg-gradient-to-b from-black/95 via-black/40 to-transparent py-6 md:py-8'}`}>
+        {/* ✅ Soft premium shadow handles visibility flawlessly over properties list surfaces */}
+        <div className={`w-full flex justify-between items-center px-6 md:px-24 transition-all duration-500 ${isScrolled ? 'bg-[#0D0D0D]/95 backdrop-blur-md py-4 shadow-[0_15px_40px_rgba(0,0,0,0.7)] ' : 'bg-gradient-to-b from-black/95 via-black/40 to-transparent py-6 md:py-8'}`}>
           <Link href="/" className="flex items-center gap-4 group cursor-pointer">
             <div className="h-10 w-10 md:h-12 md:w-12 rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-white/5 backdrop-blur-sm transition-transform group-hover:scale-105">
               <img src={logoImg} alt="SOHIP Dallas Logo" className="h-full w-full object-cover" onError={(e)=>{e.currentTarget.style.display='none'}} />
@@ -48,7 +49,7 @@ export default function Navbar({ isScrolled, isMenuOpen, setIsMenuOpen }: Navbar
             <span className="text-base md:text-lg font-serif tracking-[0.3em] uppercase hidden sm:block text-white group-hover:text-[#C9A050] transition-colors duration-300 font-medium">SOHIP DALLAS</span>
           </Link>
 
-          {/* DESKTOP LINKS - ✅ Sizing & visibility locked at premium crisp text-xs standard */}
+          {/* DESKTOP LINKS - Sizing & visibility locked at premium crisp text-xs standard */}
           <div className="hidden lg:flex gap-10 text-xs tracking-[0.25em] uppercase font-semibold">
             {navItems.map((item) => {
               const isActive = pathname === item.path;
@@ -89,7 +90,7 @@ export default function Navbar({ isScrolled, isMenuOpen, setIsMenuOpen }: Navbar
             animate={{ opacity: 1, backdropFilter: "blur(24px)" }}
             exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[110] bg-[#0A0A0A]/95 flex flex-col items-center justify-center gap-8 transform-gpu"
+            className="fixed inset-0 z-[10000] bg-[#0A0A0A]/95 flex flex-col items-center justify-center gap-8 transform-gpu"
           >
             {/* Top Logo Watermark in Drawer */}
             <div className="absolute top-6 left-6 flex items-center gap-3 opacity-40">
