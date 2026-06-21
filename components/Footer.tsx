@@ -59,7 +59,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#0A0A0A] border-t border-white/5 relative z-10 overflow-hidden transform-gpu">
+    <footer className="bg-[#000000] border-t border-white/5 relative z-10 overflow-hidden transform-gpu">
       
       {/* UPPER PREMIUM MATRIX GRID */}
       <div className="max-w-[1400px] mx-auto px-6 md:px-24 pt-24 pb-16 grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16">

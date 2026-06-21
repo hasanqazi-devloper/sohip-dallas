@@ -50,7 +50,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-20 md:py-32 bg-[#0A0A0A] border-t border-white/5 relative z-10 overflow-hidden">
+    <section id="testimonials" className="py-20 md:py-32 bg-[#000000] border-t border-white/5 relative z-10 overflow-hidden">
       
       {/* BACKGROUND GRAPHIC ACCENT */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#C9A050]/[0.02] blur-[120px] rounded-full pointer-events-none" />

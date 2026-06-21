@@ -19,7 +19,7 @@ export default function SohippReset() {
 
   return (
     // Matte charcoal block alignment
-    <section id="reset" className="py-20 md:py-32 bg-[#121212] border-y border-white/5 scroll-mt-24 relative z-10">
+    <section id="reset" className="py-20 md:py-32 bg-[#1D1813] border-y border-white/5 scroll-mt-24 relative z-10">
       {/* items-stretch applies auto-matching layout height for text layer and visual showcase boxes */}
       <div className="max-w-[1200px] mx-auto px-6 md:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
         

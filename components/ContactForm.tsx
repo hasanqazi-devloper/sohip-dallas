@@ -19,7 +19,7 @@ export default function ContactForm() {
 
   return (
     // Pure Obsidian Black Surface alignment for the final action gate
-    <section id="contact" className="py-16 md:py-32 bg-[#0D0D0D] border-t border-white/5 scroll-mt-24 relative z-10">
+    <section id="contact" className="py-16 md:py-32 bg-[#050505] border-t border-white/5 scroll-mt-24 relative z-10">
       {/* Gap grid setting optimized for fluid responsive layout matching */}
       <div className="max-w-[1200px] mx-auto px-6 md:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch">
         

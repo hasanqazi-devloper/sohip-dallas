@@ -19,7 +19,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center text-center px-4 sm:px-6 overflow-hidden bg-[#0D0D0D] pt-28 sm:pt-40 pb-16">
+    <section className="relative min-h-screen w-full flex items-center justify-center text-center px-4 sm:px-6 overflow-hidden bg-[#000000] pt-28 sm:pt-40 pb-16">
       
       {/* ⚡ HIGH-PERFORMANCE LCP BACKGROUND ENGINE */}
       <div className="absolute inset-0 z-0 select-none pointer-events-none transform-gpu">

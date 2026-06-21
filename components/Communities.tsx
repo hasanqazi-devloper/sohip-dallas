@@ -26,7 +26,7 @@ export default function Communities() {
   ];
 
   return (
-    <section id="communities" className="py-20 md:py-32 px-6 md:px-24 max-w-[1400px] mx-auto scroll-mt-24 relative z-10 bg-[#0A0A0A]">
+    <section id="communities" className="py-20 md:py-32 px-6 md:px-24 max-w-[1400px] mx-auto scroll-mt-24 relative z-10 bg-[#000000]">
       
       {/* SECTION HEADER BLOCK */}
       <div className="text-center mb-16 md:mb-24">

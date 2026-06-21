@@ -19,7 +19,7 @@ export default function About() {
 
   return (
     // Matte Charcoal Carbon surface background block
-    <section id="about" className="py-20 md:py-32 bg-[#121212] border-t border-white/5 scroll-mt-24 relative z-10">
+    <section id="about" className="py-20 md:py-32 bg-[#0D0D0D] border-t border-white/5 scroll-mt-24 relative z-10">
       <div className="max-w-[1200px] mx-auto px-6 md:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         
         {/* DESIGN INTELLECT CONTENT WRAPPER */}

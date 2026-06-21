@@ -36,7 +36,7 @@ export default function AudienceSegments() {
   ];
 
   return (
-    <section className="py-16 md:py-24 px-6 md:px-24 bg-[#0D0D0D] border-b border-white/5 relative z-10 overflow-hidden">
+    <section className="py-16 md:py-24 px-6 md:px-24 bg-[#121212] border-b border-white/5 relative z-10 overflow-hidden">
       {/* Background Subtle Wireframe Accent */}
       <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
