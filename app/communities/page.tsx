@@ -102,133 +102,146 @@ export default function CommunitiesPage() {
 
       <div className="max-w-[2200px] mx-auto px-4 sm:px-6 md:px-24 relative z-20">
         
-        {/* 🏙️ INTRO DESCRIPTION HEADER BLOCK */}
-        <div className="space-y-4 text-left max-w-3xl mb-16 border-b border-white/5 pb-10">
-          <span className="text-[10px] tracking-[0.6em] font-black text-[#C9A050] uppercase block">
-            ( DALLAS ELITE LOCATIONS MATRIX )
+      {/* 🏙️ INTRO DESCRIPTION HEADER BLOCK - ✅ Powered by Montserrat Blueprint Standard */}
+<div className="space-y-4 text-left max-w-3xl mb-16 border-b border-white/5 pb-10 font-sans">
+  
+  {/* Pre-Title Upper Ribbon */}
+  <span className="text-[10px] tracking-[0.4em] font-black text-[#C9A050] uppercase block">
+    ( DALLAS ELITE LOCATIONS MATRIX )
+  </span>
+  
+  {/* ✅ Main H1 Title: Shifted to custom Montserrat font and ultra-heavy punchy black weight */}
+  <h1 className="text-4xl sm:text-6xl md:text-7xl text-white  font-black leading-none tracking-tight">
+    Curated Communities
+  </h1>
+  
+  {/* ✅ Description Box: Switched to pure high-contrast white and strict 15px mobile response layout */}
+  <p className="text-[15px] sm:text-[16px] md:text-[17px] text-white font-normal tracking-wide leading-relaxed max-w-2xl">
+    Bespoke advisory intelligence mapping exclusively south of 635. Navigating the DFW investment vectors with precision data metrics and aesthetic desire profiles.
+  </p>
+
+</div>
+
+      {/* 🎛️ DYNAMIC REALTIME FILTER INPUT INTERFACE - ✅ High Contrast Light Matte Style */}
+<div className="mb-16 bg-[#121212] p-3 sm:p-4 rounded-2xl border border-white/5 shadow-3xl max-w-2xl mr-auto font-sans">
+  <div className="relative flex items-center bg-[#1C1C1C] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-all duration-300 shadow-inner group">
+    
+    {/* High contrast golden search icon indicator */}
+    <Search size={16} strokeWidth={2.5} className="text-[#C9A050] shrink-0 drop-shadow-[0_2px_8px_rgba(201,160,80,0.15)]" />
+    
+    {/* Enhanced high visibility text input */}
+    <input 
+      type="text" 
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      placeholder="FILTER LOCATIONS BY DISTRICT POOLS OR STRUCTURAL VIBE..." 
+      className="bg-transparent w-full text-xs tracking-[0.15em] font-black text-white outline-none placeholder-white/50 py-4 px-3 uppercase font-sans antialiased"
+    />
+    
+  </div>
+</div>
+
+       {/* ⚡ THE PRIMARY LOCALITIES SHOWCASE GRID MATRIX - ✅ Unified Luxury High-Contrast System */}
+{filteredCommunities.length > 0 ? (
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch font-sans">
+    {filteredCommunities.map((district) => (
+      <div
+        key={district.id}
+        className="group relative flex flex-col justify-between bg-[#121212] border border-white/5 rounded-2xl overflow-hidden cursor-pointer transform-gpu transition-all duration-500 shadow-3xl hover:border-[#C9A050]/40 will-change-transform"
+      >
+        {/* Visual Image Block Frame Layer - Clean high contrast image overlay */}
+        <div className="relative h-[220px] sm:h-[250px] w-full overflow-hidden bg-[#1A1A1A]">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-black/20 to-black/40 z-10 opacity-70 transition-opacity duration-500 group-hover:opacity-40" />
+          <img 
+            src={district.img} 
+            alt={district.name} 
+            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-65 group-hover:opacity-85 contrast-110 brightness-95 will-change-transform" 
+            loading="lazy"
+          />
+          
+          {/* Floating Price Bracket Tag */}
+          <span className="absolute bottom-4 left-4 z-20 bg-black/80 backdrop-blur-md text-[#C9A050] text-[10px] font-black tracking-widest uppercase px-3.5 py-2 rounded-lg border border-[#C9A050]/20 shadow-xl font-sans">
+            {district.priceRange}
           </span>
-          <h1 className="text-4xl sm:text-7xl font-serif tracking-wide text-white uppercase font-bold leading-none">
-            CURATED COMMUNITIES
-          </h1>
-          <p className="text-[15px] sm:text-[16px] text-white/50 font-light tracking-wide leading-relaxed max-w-2xl">
-            Bespoke advisory intelligence mapping exclusively south of 635. Navigating the DFW investment vectors with precision data metrics and aesthetic desire profiles.
-          </p>
         </div>
 
-        {/* 🎛️ DYNAMIC REALTIME FILTER INPUT INTERFACE */}
-        <div className="mb-16 bg-[#111111] p-4 sm:p-5 rounded-2xl border border-white/5 shadow-3xl max-w-2xl mr-auto">
-          <div className="relative flex items-center bg-[#1A1A1A] rounded-xl border border-white/5 px-4 focus-within:border-[#C9A050]/40 transition-all duration-300">
-            <Search size={18} className="text-[#C9A050] shrink-0" />
-            <input 
-              type="text" 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="FILTER LOCATIONS BY DISTRICT POOLS OR STRUCTURAL VIBE..." 
-              className="bg-transparent w-full text-xs tracking-widest font-bold text-white outline-none placeholder-white/20 py-4 px-3 uppercase font-sans"
-            />
-          </div>
-        </div>
-
-        {/* ⚡ THE PRIMARY LOCALITIES SHOWCASE GRID MATRIX */}
-        {filteredCommunities.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
-            {filteredCommunities.map((district) => (
-              <div
-                key={district.id}
-                className="group relative flex flex-col justify-between bg-[#141414] border border-white/5 rounded-2xl overflow-hidden cursor-pointer transform-gpu transition-all duration-500 shadow-3xl hover:border-[#C9A050]/30 will-change-transform"
-              >
-                {/* Visual Image Block Frame Layer */}
-                <div className="relative h-[220px] sm:h-[250px] w-full overflow-hidden bg-[#1A1A1A]">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-black/20 to-black/40 z-10" />
-                  <img 
-                    src={district.img} 
-                    alt={district.name} 
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-60 group-hover:opacity-80 will-change-transform" 
-                    loading="lazy"
-                  />
-                  
-                  {/* Floating Price Bracket Tag */}
-                  <span className="absolute bottom-4 left-4 z-20 bg-black/80 backdrop-blur-md text-[#C9A050] text-[10px] font-black tracking-widest uppercase px-3.5 py-2 rounded-lg border border-[#C9A050]/20 shadow-xl">
-                    {district.priceRange}
-                  </span>
-                </div>
-
-                {/* Core Parameters Details Panel */}
-                <div className="p-6 sm:p-8 flex-grow flex flex-col justify-between space-y-6 text-left">
-                  
-                  {/* District Title block */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between items-center gap-4">
-                      <h3 className="font-serif text-2xl sm:text-3xl text-white font-bold tracking-wide group-hover:text-[#C9A050] transition-colors duration-300">
-                        {district.name}
-                      </h3>
-                      <div className="p-1.5 rounded-full bg-white/5 border border-white/10 text-white/40 group-hover:border-[#C9A050]/40 group-hover:text-[#C9A050] transition-colors shrink-0">
-                        <ArrowUpRight size={14} className="transition-transform duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </div>
-                    </div>
-                    <p className="text-[12px] text-[#C9A050] italic font-serif tracking-wide opacity-90">
-                      "{district.headline}"
-                    </p>
-                  </div>
-
-                  {/* Vibe and Environment Description Block */}
-                  <p className="text-xs sm:text-[13px] text-white/60 font-light font-sans leading-relaxed tracking-wide">
-                    <span className="text-white/30 font-mono text-[10px] block mb-1 uppercase tracking-widest">ENVIRONMENT TEXTURE:</span>
-                    {district.vibe}
-                  </p>
-
-                  {/* Highlight Tags Framework Row */}
-                  <div className="space-y-1.5 border-t border-white/5 pt-4">
-                    <span className="text-[9px] font-mono tracking-widest text-white/30 block uppercase font-bold">DISTRICT ADVANTAGES:</span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {district.highlights.map((tag, tIdx) => (
-                        <span key={tIdx} className="bg-white/[0.02] border border-white/5 text-white/80 text-[10px] font-sans px-2.5 py-1 rounded-md whitespace-nowrap">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Metadata Statistical Metrics Mesh Row */}
-                  <div className="grid grid-cols-3 gap-2 border-t border-white/5 pt-4 text-center font-mono text-[10px] text-white/40 tracking-widest uppercase">
-                    <div className="bg-white/[0.01] p-2 rounded-xl border border-white/[0.02] flex flex-col justify-center items-center">
-                      <Compass size={12} className="text-[#C9A050]/50 mb-1" />
-                      <span className="text-white font-bold text-xs font-sans mt-0.5">{district.avgPricePerSqFt}</span>
-                      <span className="scale-[0.85] text-[8px] opacity-60 mt-0.5">Avg / SqFt</span>
-                    </div>
-                    <div className="bg-white/[0.01] p-2 rounded-xl border border-white/[0.02] flex flex-col justify-center items-center">
-                      <Building2 size={12} className="text-[#C9A050]/50 mb-1" />
-                      <span className="text-white font-bold text-xs font-sans mt-0.5">{district.activeListings.split(' ')[0]}</span>
-                      <span className="scale-[0.85] text-[8px] opacity-60 mt-0.5">Active Units</span>
-                    </div>
-                    <div className="bg-white/[0.01] p-2 rounded-xl border border-white/[0.02] flex flex-col justify-center items-center">
-                      <Percent size={12} className="text-[#C9A050]/50 mb-1" />
-                      <span className="text-white font-bold text-xs font-sans mt-0.5">{district.taxRate}</span>
-                      <span className="scale-[0.85] text-[8px] opacity-60 mt-0.5">Base Tax</span>
-                    </div>
-                  </div>
-
-                </div>
-
-                {/* Card Stand Stand Platform Footer */}
-                <div className="w-full bg-[#181818] py-4 px-6 sm:px-8 border-t border-white/5 flex justify-between items-center text-[10px] font-mono tracking-widest text-white/40 uppercase group-hover:bg-[#C9A050]/5 group-hover:border-[#C9A050]/10 transition-colors">
-                  <span>DISCRETION RECONNAISSANCE</span>
-                  <span className="text-[#C9A050] font-bold font-sans text-xs group-hover:underline">Explore Area</span>
-                </div>
-
+        {/* Core Parameters Details Panel */}
+        <div className="p-6 sm:p-8 flex-grow flex flex-col justify-between space-y-6 text-left">
+          
+          {/* District Title block */}
+          <div className="space-y-2">
+            <div className="flex justify-between items-center gap-4">
+              {/* ✅ FIXED: Switched to signature Montserrat font with extra-heavy black weight */}
+              <h3 className="font-sans text-xl sm:text-2xl font-black text-white uppercase tracking-wide group-hover:text-[#C9A050] transition-colors duration-300">
+                {district.name}
+              </h3>
+              <div className="p-1.5 rounded-full bg-white/10 border border-white/10 text-white group-hover:border-[#C9A050]/40 group-hover:text-[#C9A050] transition-colors shrink-0">
+                <ArrowUpRight size={14} className="stroke-[2.5] transition-transform duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
-            ))}
+            </div>
+            <p className="text-[12px] text-[#C9A050] uppercase font-bold tracking-wider font-sans">
+              // {district.headline}
+            </p>
           </div>
-        ) : (
-          /* Empty Search Fallback */
-          <div className="text-center py-20 bg-[#111111] rounded-2xl border border-white/5 max-w-md mx-auto space-y-4 shadow-3xl">
-            <Landmark size={28} className="text-[#C9A050]/30 mx-auto" />
-            <p className="text-white/40 text-xs tracking-widest uppercase font-mono">No Elite District Pools Located</p>
-            <button onClick={() => setSearchQuery("")} className="text-[#C9A050] text-[10px] tracking-widest uppercase font-black hover:underline">
-              Clear Filter Query
-            </button>
+
+          {/* Vibe and Environment Description Block - ✅ FIXED: Absolute clear white text at strict 15px layout standard */}
+          <p className="text-[15px] sm:text-[16px] text-white font-normal font-sans leading-relaxed tracking-wide">
+            <span className="text-[#C9A050] font-mono text-[9px] block mb-1.5 font-black tracking-widest uppercase">ENVIRONMENT TEXTURE:</span>
+            {district.vibe}
+          </p>
+
+          {/* Highlight Tags Framework Row */}
+          <div className="space-y-2 border-t border-white/5 pt-4">
+            <span className="text-[9px] font-mono tracking-widest text-[#C9A050] block uppercase font-black">DISTRICT ADVANTAGES:</span>
+            <div className="flex flex-wrap gap-1.5">
+              {district.highlights.map((tag, tIdx) => (
+                <span key={tIdx} className="bg-white/10 border border-white/10 text-white text-[11px] font-sans font-bold px-2.5 py-1 rounded-md whitespace-nowrap uppercase tracking-wider">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
-        )}
+
+          {/* Metadata Statistical Metrics Mesh Row */}
+          <div className="grid grid-cols-3 gap-2 border-t border-white/5 pt-4 text-center font-mono text-[10px] text-white/50 tracking-widest uppercase">
+            <div className="bg-white/5 p-2 rounded-xl border border-white/5 flex flex-col justify-center items-center">
+              <Compass size={12} className="text-[#C9A050] mb-1" />
+              <span className="text-white font-black text-xs font-sans mt-0.5">{district.avgPricePerSqFt}</span>
+              <span className="scale-[0.85] text-[8px] font-bold text-white/40 mt-0.5">Avg / SqFt</span>
+            </div>
+            <div className="bg-white/5 p-2 rounded-xl border border-white/5 flex flex-col justify-center items-center">
+              <Building2 size={12} className="text-[#C9A050] mb-1" />
+              <span className="text-white font-black text-xs font-sans mt-0.5">{district.activeListings.split(' ')[0]}</span>
+              <span className="scale-[0.85] text-[8px] font-bold text-white/40 mt-0.5">Active Units</span>
+            </div>
+            <div className="bg-white/5 p-2 rounded-xl border border-white/5 flex flex-col justify-center items-center">
+              <Percent size={12} className="text-[#C9A050] mb-1" />
+              <span className="text-white font-black text-xs font-sans mt-0.5">{district.taxRate}</span>
+              <span className="scale-[0.85] text-[8px] font-bold text-white/40 mt-0.5">Base Tax</span>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Card Stand Platform Footer */}
+        <div className="w-full bg-[#181818] py-4 px-6 sm:px-8 border-t border-white/5 flex justify-between items-center text-[10px] font-mono tracking-widest text-white/50 uppercase group-hover:bg-[#C9A050]/5 group-hover:border-[#C9A050]/20 transition-colors">
+          <span className="font-black text-white/40">DISCRETION RECONNAISSANCE</span>
+          <span className="text-[#C9A050] font-black font-sans text-xs group-hover:underline">Explore Area</span>
+        </div>
+
+      </div>
+    ))}
+  </div>
+) : (
+  /* Empty Search Fallback */
+  <div className="text-center py-20 bg-[#121212] rounded-2xl border border-white/5 max-w-md mx-auto space-y-4 shadow-3xl">
+    <Landmark size={28} className="text-[#C9A050]/50 mx-auto" />
+    <p className="text-white text-xs tracking-widest uppercase font-mono font-bold">No Elite District Pools Located</p>
+    <button onClick={() => setSearchQuery("")} className="text-[#C9A050] text-[10px] tracking-widest uppercase font-black hover:underline cursor-pointer">
+      Clear Filter Query
+    </button>
+  </div>
+)}
 
       </div>
     </div>

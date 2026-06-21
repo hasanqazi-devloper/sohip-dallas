@@ -8,7 +8,7 @@ export default function Testimonials() {
   const [isMobile, setIsMobile] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // ✅ Client side viewport tracking to freeze memory bottleneck configurations
+  // ✅ Client side viewport tracking to freeze memory configurations
   useEffect(() => {
     const checkDeviceWidth = () => {
       setIsMobile(window.innerWidth < 768);
@@ -51,54 +51,78 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className="py-20 md:py-32 bg-[#000000] border-t border-white/5 relative z-10 overflow-hidden w-full">
-      
+
       {/* BACKGROUND GRAPHIC ACCENT */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#C9A050]/[0.02] blur-[120px] rounded-full pointer-events-none" />
 
-      {/* ✅ Bounded framework scaled to standard max bounds */}
-      <div className="max-w-[1800px] mx-auto px-6 md:px-24 relative z-10 w-full">
-        
-        {/* SECTION HEADER */}
-        <div className="text-center mb-16 md:mb-24 space-y-4">
+      {/* Bounded framework scaled to standard max bounds */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-24 relative z-10 w-full">
+
+        {/* 🏙️ UNIFIED LUXURY SECTION HEADER BLUEPRINT */}
+        <div className="text-center mb-16 md:mb-20 space-y-3 w-full">
+          
+          {/* Pre-Title Upper Ribbon */}
           <m.span
             initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.3 }}
-            className="text-[10px] tracking-[0.8em] uppercase font-black block text-[#C9A050]"
+            className="text-[10px] tracking-[0.4em] uppercase font-black block text-[#C9A050]"
           >
             ( AUTHENTIC EXPERIENCES )
           </m.span>
+
+          {/* Main H2 Section Title */}
           <m.h2
-            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-2xl sm:text-3xl md:text-5xl font-serif tracking-wide text-white font-medium uppercase"
+            className="text-2xl sm:text-3xl md:text-4xl font-sans font-black tracking-[0.05em] text-white "
           >
             What Our Elite Network Says
           </m.h2>
-          <div className="w-16 h-[1px] bg-[#C9A050]/40 mx-auto mt-4"></div>
+
+          {/* Description Box - Calibrated back to luxury opacity standard blueprint */}
+          <m.p
+            initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="text-[15px] sm:text-[15px] md:text-[15px] font-sans font-normal tracking-wide text-white max-w-xl mx-auto leading-relaxed"
+          >
+            Verified testimonials and transaction insights straight from our exclusive real estate ecosystem.
+          </m.p>
+
+          {/* Golden Split Line Matrix */}
+          <m.div
+            initial={isMobile ? { scaleX: 1 } : { scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+            className="w-12 h-[1.5px] bg-[#C9A050]/60 mx-auto pt-2 origin-center select-none pointer-events-none"
+          />
         </div>
 
         {/* LUXURY SLIDER INTERACTION GATEWAY */}
         <div className="relative max-w-3xl mx-auto w-full">
           
-          <div className="relative min-h-[340px] sm:min-h-[280px] md:min-h-[300px] w-full overflow-hidden">
+          {/* ✅ FIX: Wrapper container layout triggers smooth hardware-accelerated fluid resizing auto-frames */}
+          <m.div layout className="w-full bg-[#141414] rounded-2xl border border-white/5 shadow-3xl relative overflow-hidden p-8 md:p-14 transform-gpu">
+            {/* Luxury gold indicator line */}
+            <div className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-[#C9A050] to-transparent w-full" />
+            <Quote size={80} className="absolute -bottom-4 -right-4 text-white/[0.01] pointer-events-none transform -rotate-12" />
+
             <AnimatePresence mode="wait">
               <m.div
                 key={activeIndex}
-                initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
+                initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: 8 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="w-full bg-[#141414] p-8 md:p-14 rounded-2xl border border-white/5 shadow-3xl relative group flex flex-col justify-between transform-gpu text-left"
+                exit={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -8 }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                className="w-full flex flex-col justify-between text-left h-full"
               >
-                {/* Luxury gold indicator line */}
-                <div className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-[#C9A050] to-transparent w-full" />
-                <Quote size={80} className="absolute -bottom-4 -right-4 text-white/[0.01] pointer-events-none transform -rotate-12" />
-
-                <div className="space-y-6">
+                <div className="space-y-5">
                   {/* 5-Star Premium Layout Indicator */}
                   <div className="flex gap-1.5 text-[#C9A050]">
                     {[...Array(5)].map((_, i) => (
@@ -106,8 +130,8 @@ export default function Testimonials() {
                     ))}
                   </div>
 
-                  {/* Text scale configured at sharp metrics standard */}
-                  <p className="text-[15px] sm:text-[17px] md:text-[18px] text-white/90 font-serif tracking-wide leading-relaxed italic">
+                  {/* Text scale configured at clean standard */}
+                  <p className="text-[15px] sm:text-[17px] md:text-[18px] text-white font-sans font-medium tracking-wide leading-relaxed italic">
                     "{reviews[activeIndex].text}"
                   </p>
                 </div>
@@ -115,7 +139,7 @@ export default function Testimonials() {
                 {/* Author Details Block */}
                 <div className="pt-6 mt-8 border-t border-white/5 flex items-center justify-between w-full">
                   <div>
-                    <h4 className="font-serif text-white text-base md:text-lg font-bold uppercase tracking-wide">
+                    <h4 className="font-sans text-white text-base font-bold uppercase tracking-wide">
                       {reviews[activeIndex].name}
                     </h4>
                     <p className="text-[#C9A050] text-[9px] sm:text-[10px] tracking-[0.2em] uppercase mt-1 font-black font-sans">
@@ -129,7 +153,7 @@ export default function Testimonials() {
                 </div>
               </m.div>
             </AnimatePresence>
-          </div>
+          </m.div>
 
           {/* MINIMALIST SLIDER CONTROLS NAVIGATION BUTTONS */}
           <div className="flex justify-center items-center gap-4 mt-8 w-full">
@@ -141,7 +165,7 @@ export default function Testimonials() {
             >
               <ChevronLeft size={14} />
             </button>
-            
+
             {/* Dot Stepper Indicator */}
             <div className="flex gap-2 select-none">
               {reviews.map((_, i) => (

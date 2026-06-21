@@ -27,68 +27,91 @@ export default function Communities() {
 
   return (
     // ✅ FIX: Removed max-w limitation from section wrapper to allow absolute liquid full-width flow on 4K monitors
-    <section id="communities" className="py-20 md:py-32 px-6 md:px-16 lg:px-24 xl:px-32 relative z-10 bg-[#000000] w-full block">
-      
-      {/* SECTION HEADER BLOCK - Centered perfectly inside full container */}
-      <div className="w-full text-center mb-16 md:mb-24 space-y-4">
-        <m.span 
+    <section id="communities" className="py-16 md:py-20 px-6 md:px-16 lg:px-24 xl:px-32 relative z-10 bg-[#000000] w-full block">
+
+      {/* 🏙️ UNIFIED LUXURY SECTION HEADER BLUEPRINT (Communities Section) */}
+      <div className="w-full text-center mb-16 md:mb-20 space-y-3">
+
+        {/* Pre-Title Upper Ribbon */}
+        <m.span
           initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.3 }}
-          className="text-[10px] tracking-[0.8em] uppercase font-black block text-[#C9A050]"
+          className="text-[10px] tracking-[0.4em] uppercase font-black block text-[#C9A050]"
         >
           ( CURATED PORTFOLIO )
         </m.span>
-        
-        <m.h2 
-          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+
+        {/* ✅ Main H2 Section Title: Direct, understandable description locked at blueprint size & ultra-heavy weight */}
+        <m.h2
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="text-2xl sm:text-3xl md:text-5xl font-serif tracking-wide text-white font-medium uppercase"
+          className="text-2xl sm:text-3xl md:text-4xl font-sans font-black tracking-[0.05em] text-white "
         >
-          Exclusive Neighborhoods South of 635
+          Explore Elite Neighborhoods
         </m.h2>
-        <div className="w-16 h-[1px] bg-[#C9A050]/40 mx-auto mt-4"></div>
+
+        {/* ✅ Description Box: High readability blueprint standard text */}
+        <m.p
+          initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="text-xs sm:text-[13px] md:text-[14px] font-sans font-normal tracking-wide text-white max-w-xl mx-auto leading-relaxed"
+        >
+          Bespoke architectural placements and high-ticket residential listings localized strictly south of 635.
+        </m.p>
+
+        {/* Golden Split Line Matrix */}
+        <m.div
+          initial={isMobile ? { scaleX: 1 } : { scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+          className="w-12 h-[1.5px] bg-[#C9A050]/60 mx-auto pt-2 origin-center select-none pointer-events-none"
+        />
       </div>
 
       {/* LUXURY INTERACTIVE CARDS GRID */}
-      {/* ✅ FIX: Grid layout dynamically tracks 3xl / 4xl screens to prevent horizontal breaking or squeezing */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 w-full items-stretch mx-auto">
+      {/* LUXURY INTERACTIVE CARDS GRID - ✅ Adaptive Ultra-Wide Scaling Engine */}
+      {/* FIX: Dynamic breakdown sets 4 columns on 2xl grids, and all 6 cards straight in a single line on 4K/3xl monitors */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-6 gap-8 w-full items-stretch mx-auto">
         {neighborhoods.map((area, i) => (
-          <m.div 
-            key={area.id} 
+          <m.div
+            key={area.id}
             initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.4, delay: isMobile ? 0 : i * 0.05, ease: "easeOut" }}
-            className="relative h-[380px] sm:h-[420px] md:h-[440px] xl:h-[480px] rounded-xl overflow-hidden cursor-pointer shadow-3xl border border-white/5 group bg-[#161616] transform-gpu transition-all duration-500 sm:hover:-translate-y-2 will-change-transform w-full"
+            className="relative h-[380px] sm:h-[420px] md:h-[440px] xl:h-[460px] rounded-xl overflow-hidden cursor-pointer shadow-3xl border border-white/5 group bg-[#161616] transform-gpu transition-all duration-500 sm:hover:-translate-y-2 will-change-transform w-full"
           >
-            {/* FIXED OVERLAY MATRIX */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-10 opacity-80 sm:group-hover:opacity-40 transition-opacity duration-500" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10 transition-all duration-500 sm:group-hover:from-black sm:group-hover:via-black/90" />
-            
-            {/* Parallax Smooth Zoom Image Layout */}
-            <img 
-              src={area.img} 
-              alt={area.name} 
+            {/* FIXED OVERLAY MATRIX - Tuned for absolute picture clarity & high data contrast */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent z-10 opacity-60 sm:group-hover:opacity-20 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10 transition-all duration-500 sm:group-hover:via-black/20" />
+
+            {/* Parallax Smooth Zoom Image Layout - Crystal clear configuration without dead gray shadows */}
+            <img
+              src={area.img}
+              alt={area.name}
               decoding="async"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 sm:group-hover:scale-105 opacity-50 sm:group-hover:opacity-70 will-change-transform" 
-              loading="lazy" 
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 sm:group-hover:scale-105 opacity-65 sm:group-hover:opacity-85 contrast-110 brightness-95 will-change-transform"
+              loading="lazy"
             />
-            
+
             {/* Asset Parameter Details Block */}
             <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 z-20 flex flex-col items-start space-y-3">
               <span className="text-[#C9A050] text-[10px] font-black tracking-widest uppercase bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-[#C9A050]/20 shadow-lg font-sans">
                 {area.price}
               </span>
-              
-              <h3 className="text-xl sm:text-2xl font-serif text-white tracking-wide sm:group-hover:text-[#C9A050] transition-colors duration-300 font-bold uppercase">
+
+              <h3 className="text-xl sm:text-2xl font-sans text-white tracking-wide sm:group-hover:text-[#C9A050] transition-colors duration-300 font-bold uppercase">
                 {area.name}
               </h3>
-              
-              <p className="text-[11px] sm:text-[12px] font-mono text-white/50 tracking-[0.18em] uppercase transition-colors duration-300 sm:group-hover:text-white/80">
+
+              <p className="text-[11px] sm:text-[12px] font-sans text-white/50 tracking-[0.18em] uppercase transition-colors duration-300 sm:group-hover:text-white/80">
                 {area.listings}
               </p>
             </div>

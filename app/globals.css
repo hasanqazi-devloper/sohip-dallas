@@ -42,3 +42,9 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* 🎛️ TAILWIND V4 FONTS CONFIGURATION BINDINGS */
+@theme inline {
+  --font-serif: var(--font-montserrat);
+  --font-sans: var(--font-montserrat);
+}

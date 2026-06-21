@@ -35,155 +35,157 @@ export default function ContactPage() {
 
       <div className="max-w-[1900px] mx-auto px-4 sm:px-6 md:px-34 relative z-20">
         
-        {/* 🏙️ INTRO GRID STRUCTURE */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
-          {/* LEFT COLUMN: DIRECT VAULT INTEL */}
-          <div className="lg:col-span-5 space-y-8 text-left">
-            <div className="space-y-4">
-              <span className="text-[10px] tracking-[0.5em] font-black text-[#C9A050] uppercase block">
-                ( SECURE ENGAGEMENT GATEWAY )
-              </span>
-              <h1 className="text-4xl sm:text-6xl font-serif tracking-wide text-white uppercase font-bold leading-none">
-                CONNECT PRIVATELY
-              </h1>
-              <p className="text-[15px] text-white/50 font-light tracking-wide leading-relaxed">
-                Initiate client representation pipelines for premier residential assets south of 635. Total operational discretion guaranteed across all communication vectors.
-              </p>
-            </div>
+ {/* 🏙️ INTRO GRID STRUCTURE - ✅ High Contrast Separation & Montserrat Layout */}
+<div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start font-sans w-full">
+  
+  {/* LEFT COLUMN: DIRECT VAULT INTEL */}
+  <div className="lg:col-span-5 space-y-8 text-left w-full">
+    <div className="space-y-4">
+      <span className="text-[10px] tracking-[0.4em] font-black text-[#C9A050]  block">
+        ( SECURE ENGAGEMENT GATEWAY )
+      </span>
+      {/* ✅ FIXED: Switched to signature Montserrat font with extra-heavy black weight */}
+      <h1 className="text-4xl sm:text-5xl md:text-6xl text-white  font-black leading-none tracking-tight">
+        Connect Privately
+      </h1>
+      {/* ✅ FIXED: Pure high-contrast white text at strict 15px mobile response layout */}
+      <p className="text-[15px] sm:text-[16px] md:text-[17px] text-white font-normal tracking-wide leading-relaxed">
+        Initiate client representation pipelines for premier residential assets south of 635. Total operational discretion guaranteed across all communication vectors.
+      </p>
+    </div>
 
-            <div className="w-16 h-[1px] bg-[#C9A050]/30" />
+    <div className="w-12 h-[1.5px] bg-[#C9A050]/60 select-none pointer-events-none" />
 
-            {/* Communication Vectors Stack */}
-            <div className="space-y-6 font-mono text-xs tracking-widest text-white/70">
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-[#121212] border border-white/5">
-                <Phone size={16} className="text-[#C9A050] shrink-0 mt-0.5" />
-                <div className="space-y-1">
-                  <p className="text-[9px] text-white/30 font-black uppercase">DIRECT ACQUISITIONS LINE</p>
-                  <p className="text-white font-bold text-sm font-sans">(214) 428-1121</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-[#121212] border border-white/5">
-                <Mail size={16} className="text-[#C9A050] shrink-0 mt-0.5" />
-                <div className="space-y-1">
-                  <p className="text-[9px] text-white/30 font-black uppercase">SECURE COMMUNICATIONS</p>
-                  <p className="text-white font-bold text-sm font-sans hover:text-[#C9A050] transition-colors cursor-pointer">jennifer@sohipdallas.homes</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 p-4 rounded-xl bg-[#121212] border border-white/5">
-                <Clock size={16} className="text-[#C9A050] shrink-0 mt-0.5" />
-                <div className="space-y-1">
-                  <p className="text-[9px] text-white/30 font-black uppercase">OPERATIONAL WINDOW</p>
-                  <p className="text-white font-bold uppercase">24/7 Elite Client Concierge</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Regulatory Base Compliance Banner */}
-            <div className="p-4 rounded-xl border border-dashed border-white/10 text-[10px] text-white/40 leading-relaxed space-y-2">
-              <p className="flex items-center gap-1.5 font-bold text-[#C9A050]/80"><Award size={12}/> COMPLIANCE BROKERAGE MATRIX</p>
-              <p>SOHIP Dallas Homes operations are certified under JPAR Real Estate. Texas Real Estate Commission Brokerage License #0599698.</p>
-            </div>
-          </div>
-
-          {/* RIGHT COLUMN: HIGH-CONTRAST INTAKE INQUIRY FORM */}
-          <div className="lg:col-span-7 bg-[#111111] border border-white/5 p-6 sm:p-10 rounded-2xl shadow-[0_30px_70px_rgba(0,0,0,0.9)]">
-            <form onSubmit={handleSubmit} className="space-y-6 text-left">
-              
-              {/* Input Name Row */}
-              <div className="space-y-2">
-                <label className="text-[9px] font-mono tracking-widest text-white/40 block uppercase font-black">FULL INDIVIDUAL NAME</label>
-                <div className="relative flex items-center bg-[#1A1A1A] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-colors duration-300">
-                  <input 
-                    type="text" 
-                    required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="ENTER YOUR LEGAL IDENTITY..." 
-                    className="bg-transparent w-full text-xs tracking-widest font-bold text-white outline-none placeholder-white/20 py-4 uppercase font-sans"
-                  />
-                </div>
-              </div>
-
-              {/* Input Grid: Email & Phone */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-[9px] font-mono tracking-widest text-white/40 block uppercase font-black">SECURE EMAIL ROUTE</label>
-                  <div className="relative flex items-center bg-[#1A1A1A] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-colors duration-300">
-                    <input 
-                      type="email" 
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="E.G. INVESTOR@DOMAIN.COM" 
-                      className="bg-transparent w-full text-xs tracking-widest font-bold text-white outline-none placeholder-white/20 py-4 uppercase font-sans"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-[9px] font-mono tracking-widest text-white/40 block uppercase font-black">MOBILE VALIDATION SECURE</label>
-                  <div className="relative flex items-center bg-[#1A1A1A] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-colors duration-300">
-                    <input 
-                      type="tel" 
-                      required
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="(555) 000-0000" 
-                      className="bg-transparent w-full text-xs tracking-widest font-bold text-white outline-none placeholder-white/20 py-4 uppercase font-sans"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Segment Classification Dropdown */}
-              <div className="space-y-2">
-                <label className="text-[9px] font-mono tracking-widest text-white/40 block uppercase font-black">INTENT RESIDENTIAL VECTOR</label>
-                <div className="relative flex items-center bg-[#1A1A1A] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-colors duration-300">
-                  <select 
-                    value={formData.interest}
-                    onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
-                    className="bg-transparent w-full text-xs tracking-widest font-bold text-white outline-none py-4 uppercase font-sans cursor-pointer appearance-none"
-                  >
-                    <option value="BUYING" className="bg-[#111] text-white">Acquiring Luxury Classification Asset</option>
-                    <option value="SELLING" className="bg-[#111] text-white">Liquidating Capital Real Estate Property</option>
-                    <option value="STAGING" className="bg-[#111] text-white">Initiating Signature Staging Reset Program</option>
-                    <option value="OFF-MARKET" className="bg-[#111] text-white">Requesting Private Network Vault Access</option>
-                  </select>
-                </div>
-              </div>
-
-              {/* Input Message Area */}
-              <div className="space-y-2">
-                <label className="text-[9px] font-mono tracking-widest text-white/40 block uppercase font-black">CONFIDENTIAL MISSION OVERVIEW</label>
-                <div className="relative flex items-center bg-[#1A1A1A] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-colors duration-300">
-                  <textarea 
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    placeholder="DESCRIBE THE CORE PARAMETERS OF YOUR ACQUISITION OR ASSET INTEL NEEDS..." 
-                    className="bg-transparent w-full text-xs tracking-widest font-bold text-white outline-none placeholder-white/20 py-4 uppercase font-sans resize-none"
-                  />
-                </div>
-              </div>
-
-              {/* Form Trigger Button Section */}
-              <div className="pt-2">
-                <button 
-                  type="submit"
-                  className="w-full bg-[#C9A050] text-black text-[10px] font-black tracking-[0.25em] uppercase py-4 rounded-xl hover:bg-white transition-all duration-300 shadow-xl flex items-center justify-center gap-2 transform-gpu active:scale-[0.98]"
-                >
-                  <Send size={12} />
-                  <span>TRANSMIT VIP ACCESS INQUIRY</span>
-                </button>
-              </div>
-
-            </form>
-          </div>
-
+    {/* Communication Vectors Stack - ✅ Updated to deep graphite background wrappers for absolute contrast */}
+    <div className="space-y-4 font-mono text-xs tracking-widest text-white/80 w-full">
+      <div className="flex items-start gap-4 p-4 rounded-xl bg-[#121212] border border-white/5 shadow-md">
+        <Phone size={14} className="text-[#C9A050] shrink-0 mt-0.5" />
+        <div className="space-y-1">
+          <p className="text-[9px] text-[#C9A050] font-black  tracking-[0.15em]">DIRECT ACQUISITIONS LINE</p>
+          <p className="text-white font-black text-sm font-sans tracking-wide">(214) 428-1121</p>
         </div>
+      </div>
+
+      <div className="flex items-start gap-4 p-4 rounded-xl bg-[#121212] border border-white/5 shadow-md">
+        <Mail size={14} className="text-[#C9A050] shrink-0 mt-0.5" />
+        <div className="space-y-1">
+          <p className="text-[9px] text-[#C9A050] font-black  tracking-[0.15em]">SECURE COMMUNICATIONS</p>
+          <p className="text-white font-black text-sm font-sans tracking-wide hover:text-[#C9A050] transition-colors cursor-pointer break-all">jennifer@sohipdallas.homes</p>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-4 p-4 rounded-xl bg-[#121212] border border-white/5 shadow-md">
+        <Clock size={14} className="text-[#C9A050] shrink-0 mt-0.5" />
+        <div className="space-y-1">
+          <p className="text-[9px] text-[#C9A050] font-black  tracking-[0.15em]">OPERATIONAL WINDOW</p>
+          <p className="text-white font-bold  font-sans tracking-wide">24/7 Elite Client Concierge</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Regulatory Base Compliance Banner - ✅ Fixed high contrast text transparency mapping */}
+    <div className="p-4 rounded-xl border border-dashed border-white/10 text-[10px] text-white/60 leading-relaxed space-y-2 font-sans font-medium w-full">
+      <p className="flex items-center gap-1.5 font-black text-[#C9A050] tracking-wider "><Award size={12}/> COMPLIANCE BROKERAGE MATRIX</p>
+      <p>SOHIP Dallas Homes operations are certified under JPAR Real Estate. Texas Real Estate Commission Brokerage License #0599698.</p>
+    </div>
+  </div>
+
+  {/* RIGHT COLUMN: HIGH-CONTRAST INTAKE INQUIRY FORM - ✅ Ambient glow mesh with enhanced separation boundaries */}
+  <div className="lg:col-span-7 bg-[#121212] bg-[radial-gradient(circle_at_top_left,rgba(201,160,80,0.03),transparent_45%)] border border-white/5 focus-within:border-[#C9A050]/30 p-6 sm:p-10 rounded-2xl shadow-[0_30px_70px_rgba(0,0,0,0.9)] w-full transition-all duration-500">
+    <form onSubmit={handleSubmit} className="space-y-6 text-left w-full">
+      
+      {/* Input Name Row */}
+      <div className="space-y-1.5 w-full">
+        <label className="text-[10px] font-mono tracking-[0.2em] text-[#C9A050] block  font-black">FULL INDIVIDUAL NAME</label>
+        <div className="relative flex items-center bg-[#1C1C1C] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-colors duration-300 shadow-inner">
+          <input 
+            type="text" 
+            required
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            placeholder="ENTER YOUR LEGAL IDENTITY..." 
+            className="bg-transparent w-full text-xs tracking-[0.15em] font-black text-white outline-none placeholder-white/50 py-4  font-sans"
+          />
+        </div>
+      </div>
+
+      {/* Input Grid: Email & Phone */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
+        <div className="space-y-1.5">
+          <label className="text-[10px] font-mono tracking-[0.2em] text-[#C9A050] block  font-black">SECURE EMAIL ROUTE</label>
+          <div className="relative flex items-center bg-[#1C1C1C] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-colors duration-300 shadow-inner">
+            <input 
+              type="email" 
+              required
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              placeholder="E.G. INVESTOR@DOMAIN.COM" 
+              className="bg-transparent w-full text-xs tracking-[0.15em] font-black text-white outline-none placeholder-white/50 py-4  font-sans"
+            />
+          </div>
+        </div>
+
+        <div className="space-y-1.5">
+          <label className="text-[10px] font-mono tracking-[0.2em] text-[#C9A050] block  font-black">MOBILE VALIDATION SECURE</label>
+          <div className="relative flex items-center bg-[#1C1C1C] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-colors duration-300 shadow-inner">
+            <input 
+              type="text" 
+              required
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              placeholder="(214) 000-0000" 
+              className="bg-transparent w-full text-xs tracking-[0.15em] font-black text-white outline-none placeholder-white/50 py-4  font-sans"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Segment Classification Dropdown */}
+      <div className="space-y-1.5 w-full">
+        <label className="text-[10px] font-mono tracking-[0.2em] text-[#C9A050] block  font-black">INTENT RESIDENTIAL VECTOR</label>
+        <div className="relative flex items-center bg-[#1C1C1C] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-colors duration-300 shadow-inner">
+          <select 
+            value={formData.interest}
+            onChange={(e) => setFormData({ ...formData, interest: e.target.value })}
+            className="bg-transparent w-full text-xs tracking-[0.15em] font-black text-white outline-none py-4  font-sans cursor-pointer appearance-none z-10"
+          >
+            <option value="BUYING" className="bg-[#121212] text-white font-bold">Acquiring Luxury Classification Asset</option>
+            <option value="SELLING" className="bg-[#121212] text-white font-bold">Liquidating Capital Real Estate Property</option>
+            <option value="STAGING" className="bg-[#121212] text-white font-bold">Initiating Signature Staging Reset Program</option>
+            <option value="OFF-MARKET" className="bg-[#121212] text-white font-bold">Requesting Private Network Vault Access</option>
+          </select>
+          <div className="absolute right-4 pointer-events-none z-0 text-[#C9A050] text-xs font-bold font-sans">SELECT</div>
+        </div>
+      </div>
+
+      {/* Input Message Area */}
+      <div className="space-y-1.5 w-full">
+        <label className="text-[10px] font-mono tracking-[0.2em] text-[#C9A050] block  font-black">CONFIDENTIAL MISSION OVERVIEW</label>
+        <div className="relative flex items-center bg-[#1C1C1C] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-colors duration-300 shadow-inner">
+          <textarea 
+            rows={4}
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            placeholder="DESCRIBE THE CORE PARAMETERS OF YOUR ACQUISITION OR ASSET INTEL NEEDS..." 
+            className="bg-transparent w-full text-xs tracking-[0.15em] font-black text-white outline-none placeholder-white/50 py-4  font-sans resize-none leading-relaxed"
+          />
+        </div>
+      </div>
+
+      {/* Form Trigger Button Section - ✅ Shortened for absolute elite response */}
+      <div className="pt-2 w-full">
+        <button 
+          type="submit"
+          className="w-full bg-[#C9A050] text-black text-[11px] font-black tracking-[0.25em]  py-4.5 rounded-xl hover:bg-white hover:text-black transition-all duration-300 shadow-xl flex items-center justify-center gap-2 transform-gpu active:scale-[0.98] cursor-pointer font-sans"
+        >
+          <span>TRANSMIT INQUIRY</span>
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+</div>
 
       </div>
     </div>

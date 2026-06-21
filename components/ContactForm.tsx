@@ -21,108 +21,110 @@ export default function ContactForm() {
     // Pure Obsidian Black Surface alignment for the final action gate
     <section id="contact" className="py-20 md:py-32 bg-[#050505] border-t border-white/5 scroll-mt-24 relative z-10 w-full">
       
-      {/* ✅ FIX: Bounded wrapper updated to max-w-[1400px] to align perfectly with header grids and heroes */}
-      <div className="max-w-[1800px] mx-auto px-6 md:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch w-full">
+      {/* ✅ FIX: Bounded wrapper locked at unified max-w-[1400px] alignment structure */}
+      <div className="max-w-[1400px] mx-auto px-6 md:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch w-full">
         
-        {/* CORPORATE INFORMATION LAYER */}
+        {/* CORPORATE INFORMATION LAYER - ✅ Powered by Montserrat & Unified Header Blueprint */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-8 text-left py-2">
-          <div className="space-y-6">
+          <div className="space-y-4">
+            {/* Pre-Title Upper Ribbon */}
             <m.span 
               initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.3 }}
-              className="text-[10px] tracking-[0.5em] text-[#C9A050] font-black uppercase block"
+              className="text-[10px] tracking-[0.4em] font-black text-[#C9A050] uppercase block"
             >
               ( PRIVACY & DATA NETWORK )
             </m.span>
             
+            {/* Main H2 Section Title */}
             <m.h2 
-              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif italic text-white font-medium leading-tight uppercase"
+              className="text-2xl sm:text-3xl md:text-4xl font-sans font-black tracking-[0.05em] text-white leading-tight"
             >
               Connect Privately.
             </m.h2>
             
+            {/* Description Box */}
             <m.p 
               initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.4 }}
-              className="text-[15px] sm:text-[16px] text-white/50 font-light font-sans leading-relaxed max-w-sm tracking-wide"
+              className="text-[15px] sm:text-[16px] text-white font-sans font-normal leading-relaxed max-w-sm tracking-wide"
             >
               Unlock structured local analytics, premium off-market listing updates, and private DFW investment vectors direct to your corporate network hub.
             </m.p>
           </div>
 
-          {/* Contact Cards Stack - Pushed middle-to-bottom automatically with #C9A050 sync */}
-          <div className="space-y-4 pt-8 text-[14px] sm:text-[15px] text-white/80 font-light tracking-wide font-sans border-t border-white/5 max-w-sm">
+          {/* Contact Cards Stack */}
+          <div className="space-y-4 pt-8 text-[14px] sm:text-[15px] text-white font-sans font-normal tracking-wide border-t border-white/5 max-w-sm">
             <p className="flex items-center gap-4 group cursor-pointer hover:text-[#C9A050] transition-colors duration-300">
               <Phone size={14} className="text-[#C9A050] shrink-0" /> (214) 428-1121
             </p>
-            <p className="flex items-center gap-4 group cursor-pointer hover:text-[#C9A050] transition-colors duration-300 uppercase tracking-widest text-xs">
-              {/* ✅ Domain corrected from .com to unified premium .homes matrix routing link */}
+            <p className="flex items-center gap-4 group cursor-pointer hover:text-[#C9A050] transition-colors duration-300 uppercase tracking-widest text-xs font-bold">
               <Mail size={14} className="text-[#C9A050] shrink-0" /> jennifer@sohipdallas.homes
             </p>
-            <div className="flex items-start gap-4 text-white/50 leading-relaxed">
+            <div className="flex items-start gap-4 leading-relaxed">
               <MapPin size={14} className="text-[#C9A050] shrink-0 mt-1" /> 
               <span>650 Fort Worth Ave, <br /> Dallas, Texas</span>
             </div>
           </div>
 
-          {/* Legal Compliance Block - Anchored strictly to the bottom edge */}
-          <div className="pt-6 text-[9px] tracking-widest uppercase text-white/30 space-y-2 font-mono max-w-md border-t border-white/5 lg:border-none">
-            <p className="flex items-center gap-2 font-black text-[#C9A050]/70"><ShieldCheck size={12} className="shrink-0" /> Brokerage Compliance Framework Active</p>
+          {/* Legal Compliance Block */}
+          <div className="pt-6 text-[9px] tracking-widest text-white space-y-2 font-mono max-w-md border-t border-white/5 lg:border-none">
+            <p className="flex items-center gap-2 font-black text-white"><ShieldCheck size={12} className="shrink-0" /> Brokerage Compliance Framework Active</p>
             <p>JPAR Real Estate Corporation Systems • License #0599698</p>
           </div>
         </div>
 
-        {/* INPUT VALIDATION CONTROL HUB FORM */}
+        {/* INPUT VALIDATION CONTROL HUB FORM - ✅ Fixed Contrast with Subtle Ambient Gold Mesh Overlay */}
         <m.form 
           initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.4, ease: "easeOut" }}
           onSubmit={(e) => e.preventDefault()} 
-          className="lg:col-span-7 space-y-6 bg-[#141414] p-6 sm:p-10 md:p-12 border border-white/5 rounded-2xl shadow-3xl relative flex flex-col justify-center overflow-hidden group transform-gpu w-full text-left"
+          className="lg:col-span-7 space-y-6 bg-[#141414] bg-[radial-gradient(circle_at_top_left,rgba(201,160,80,0.03),transparent_45%)] p-6 sm:p-10 md:p-12 border border-white/5 focus-within:border-[#C9A050]/30 rounded-2xl shadow-3xl relative flex flex-col justify-center overflow-hidden group transform-gpu w-full text-left font-sans transition-all duration-500"
         >
           {/* Subtle inside tracking animation border updated to new brand hex layout line */}
-          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#C9A050]/20 to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#C9A050]/30 to-transparent" />
 
           <div className="space-y-1 w-full">
-            <label className="text-[9px] font-mono tracking-widest text-white/30 uppercase block font-black">Identified Identity</label>
+            <label className="text-[10px] font-mono tracking-[0.2em] text-[#C9A050] uppercase block font-black">Identified Identity</label>
             <input 
               type="text" 
               required
               placeholder="ENTER YOUR FULL LEGAL NAME..." 
-              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-widest font-bold placeholder-white/15 font-sans" 
+              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-[0.2em] font-bold placeholder-white/45 font-sans" 
             />
           </div>
 
           <div className="space-y-1 w-full">
-            <label className="text-[9px] font-mono tracking-widest text-white/30 uppercase block font-black">Communication Routing</label>
+            <label className="text-[10px] font-mono tracking-[0.2em] text-[#C9A050] uppercase block font-black">Communication Routing</label>
             <input 
               type="email" 
               required
               placeholder="ENTER SECURE EMAIL ADDRESS..." 
-              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-widest font-bold placeholder-white/15 font-sans" 
+              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-[0.2em] font-bold placeholder-white/45 font-sans" 
             />
           </div>
 
           <div className="space-y-1 w-full">
-            <label className="text-[9px] font-mono tracking-widest text-white/30 uppercase block font-black">Confidential Parameters</label>
+            <label className="text-[10px] font-mono tracking-[0.2em] text-[#C9A050] uppercase block font-black">Confidential Parameters</label>
             <textarea 
               placeholder="DESCRIBE THE PARAMETERS OF YOUR ACQUISITION OR ASSET INTEL NEEDS..." 
               rows={4} 
-              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-widest font-bold placeholder-white/15 resize-none font-sans" 
+              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-[0.2em] font-bold placeholder-white/45 resize-none font-sans leading-relaxed" 
             />
           </div>
 
           <div className="pt-4 w-full">
-            <button className="w-full bg-[#C9A050] text-black py-5 tracking-[0.35em] font-black text-xs hover:bg-white transition-colors uppercase rounded-full shadow-2xl sm:active:scale-[0.98] duration-300 transform-gpu cursor-pointer">
+            <button className="w-full bg-[#C9A050] text-black py-5 tracking-[0.35em] font-black text-xs hover:bg-white transition-colors uppercase rounded-full shadow-2xl sm:active:scale-[0.98] duration-300 transform-gpu cursor-pointer font-sans">
               Transmit VIP Access Matrix
             </button>
           </div>

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ArrowUpRight, Shield, Award } from "lucide-react";
 
 export default function Footer() {
-  // ✅ Hardcoded runtime standard tracking prevents server-side hydration mismatches completely 
+  // Hardcoded runtime standard tracking prevents server-side hydration mismatches completely 
   const currentYear = "2026";
   const logoImg = "/sohip-dallas-logo-main.png";
 
@@ -74,12 +74,13 @@ export default function Footer() {
                 onError={(e) => { e.currentTarget.style.display = 'none'; }} 
               />
             </div>
-            <div className="text-lg font-serif tracking-[0.25em] text-[#C9A050] font-black uppercase">
+            <div className="text-lg font-sans tracking-[0.25em] text-[#C9A050] font-black uppercase">
               SOHIP DALLAS
             </div>
           </div>
 
-          <p className="text-[13px] sm:text-[14px] text-white/50 font-light leading-relaxed max-w-sm font-sans">
+          {/* ✅ FIXED: Shifted to pure text-white font weight for absolute direct reading */}
+          <p className="text-[13px] sm:text-[14px] text-white font-normal leading-relaxed max-w-sm font-sans tracking-wide">
             Bespoke property intelligence and architectural staging south of 635. Elevating residential assets into highly coveted luxury products.
           </p>
 
@@ -92,7 +93,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="p-2.5 rounded-full bg-white/5 text-white/50 border border-white/5 hover:border-[#C9A050]/30 hover:text-[#C9A050] hover:bg-[#0A0A0A] transition-all duration-300 transform-gpu active:scale-95"
+                className="p-2.5 rounded-full bg-white/10 text-white border border-white/10 hover:border-[#C9A050] hover:text-[#C9A050] hover:bg-[#0A0A0A] transition-all duration-300 transform-gpu active:scale-95"
               >
                 {social.icon}
               </a>
@@ -100,13 +101,13 @@ export default function Footer() {
           </div>
 
           {/* Elite Trust Badges */}
-          <div className="flex items-center gap-4 text-white/30 pt-3">
-            <div className="flex items-center gap-1.5 text-[9px] font-mono tracking-widest uppercase">
-              <Shield size={11} className="text-[#C9A050]/70" /> JPAR ELITE
+          <div className="flex items-center gap-4 text-white pt-3 select-none">
+            <div className="flex items-center gap-1.5 text-[10px] font-mono tracking-widest uppercase font-bold">
+              <Shield size={11} className="text-[#C9A050]" /> JPAR ELITE
             </div>
-            <span className="text-white/10">|</span>
-            <div className="flex items-center gap-1.5 text-[9px] font-mono tracking-widest uppercase">
-              <Award size={11} className="text-[#C9A050]/70" /> DFW TOP 10
+            <span className="text-white/20">|</span>
+            <div className="flex items-center gap-1.5 text-[10px] font-mono tracking-widest uppercase font-bold">
+              <Award size={11} className="text-[#C9A050]" /> DFW TOP 10
             </div>
           </div>
         </div>
@@ -114,10 +115,11 @@ export default function Footer() {
         {/* EXPLORE NAVIGATION LINKS (4 Cols) */}
         <div className="md:col-span-4 grid grid-cols-2 gap-6 pt-2 text-left">
           <div className="space-y-4">
-            <h4 className="text-[10px] sm:text-[11px] tracking-[0.3em] font-black uppercase text-white font-sans">
+            <h4 className="text-[11px] tracking-[0.25em] font-black uppercase text-[#C9A050] font-sans">
               STRUCTURE
             </h4>
-            <ul className="space-y-3 text-[13px] font-light text-white/50 font-sans">
+            {/* ✅ FIXED: Pure white dynamic link text handles */}
+            <ul className="space-y-3 text-[13px] font-medium text-white font-sans">
               <li>
                 <Link href="/" className="hover:text-[#C9A050] transition-colors flex items-center gap-1 group w-max">
                   Home <ArrowUpRight size={11} className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#C9A050]" />
@@ -137,10 +139,11 @@ export default function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-[10px] sm:text-[11px] tracking-[0.3em] font-black uppercase text-white font-sans">
+            <h4 className="text-[11px] tracking-[0.25em] font-black uppercase text-[#C9A050] font-sans">
               PORTALS
             </h4>
-            <ul className="space-y-3 text-[13px] font-light text-white/50 font-sans">
+            {/* ✅ FIXED: High visibility clean whites */}
+            <ul className="space-y-3 text-[13px] font-medium text-white font-sans">
               <li>
                 <Link href="/communities" className="hover:text-[#C9A050] transition-colors flex items-center gap-1 group w-max">
                   Communities <ArrowUpRight size={11} className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#C9A050]" />
@@ -157,17 +160,18 @@ export default function Footer() {
 
         {/* INSIDER PRIVACY CAPTURE NODE (4 Cols) */}
         <div className="md:col-span-4 space-y-4 pt-2 text-left">
-          <h4 className="text-[10px] sm:text-[11px] tracking-[0.3em] font-black uppercase text-white font-sans">
+          <h4 className="text-[11px] tracking-[0.25em] font-black uppercase text-[#C9A050] font-sans">
             VIP INTELLIGENCE
           </h4>
-          <p className="text-[13px] text-white/40 font-light leading-relaxed font-sans">
+          {/* ✅ FIXED: Shifted text node to pure clear white */}
+          <p className="text-[13px] text-white font-normal leading-relaxed font-sans tracking-wide">
             Subscribe to receive direct off-market inventory notifications.
           </p>
-          <div className="relative flex items-center border-b border-white/10 focus-within:border-[#C9A050] transition-colors pb-1 pt-2 w-full">
+          <div className="relative flex items-center border-b border-white/20 focus-within:border-[#C9A050] transition-colors pb-1 pt-2 w-full">
             <input 
               type="email" 
               placeholder="ENTER EMAIL HUB..." 
-              className="bg-transparent w-full text-xs tracking-widest font-bold text-white outline-none uppercase placeholder-white/15 py-2 font-sans"
+              className="bg-transparent w-full text-xs tracking-widest font-bold text-white outline-none uppercase placeholder-white/40 py-2 font-sans"
             />
             <button type="button" className="text-[#C9A050] text-[10px] font-black tracking-widest uppercase hover:text-white transition-colors outline-none cursor-pointer px-2">
               JOIN
@@ -179,22 +183,24 @@ export default function Footer() {
 
       {/* LOWER BOTTOM REGULATORY COMPLIANCE BANNER */}
       <div className="border-t border-white/5 bg-[#080808] py-8 px-6 w-full">
-        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left w-full">
+        <div className="max-w-[2200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left w-full">
           
-          <div className="space-y-1">
-            <p className="text-[10px] sm:text-[11px] opacity-40 tracking-[0.2em] uppercase text-white font-medium font-sans">
+          <div className="space-y-1.5">
+            {/* ✅ FIXED: Pure high-contrast whites across all regulatory strings */}
+            <p className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-white font-bold font-sans">
               © {currentYear} SOHIP DALLAS • POWERED BY HIGH RISE CODE UNITS
             </p>
-            <p className="text-[9px] sm:text-[10px] text-white/20 font-mono tracking-wide">
+            <p className="text-[10px] text-white/80 font-mono tracking-wide font-medium">
               Brokerage License #0599698 | JPAR Real Estate Corporate Distribution
             </p>
           </div>
 
-          <div className="text-[9px] sm:text-[10px] tracking-wider uppercase text-white/40 flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 font-mono">
+          {/* ✅ FIXED: Terms and compliance endpoints mapped to highly legible clear weights */}
+          <div className="text-[10px] tracking-wider uppercase text-white flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 font-mono font-medium">
             <Link href="/contact" className="hover:text-[#C9A050] transition-colors">
               Consumer Protection Notice
             </Link>
-            <span className="hidden sm:inline opacity-10 text-white">|</span>
+            <span className="hidden sm:inline text-white/30">|</span>
             <Link href="/contact" className="hover:text-[#C9A050] transition-colors">
               Information About Brokerage Services
             </Link>

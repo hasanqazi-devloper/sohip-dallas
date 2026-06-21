@@ -120,9 +120,9 @@ export default function PropertiesPage() {
 
   const filteredListings = listings.filter(item => {
     const matchesCategory = activeFilter === "ALL" || item.category === activeFilter;
-    const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          item.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          item.features.some(f => f.toLowerCase().includes(searchQuery.toLowerCase()));
+    const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.features.some(f => f.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCategory && matchesSearch;
   });
 
@@ -130,57 +130,64 @@ export default function PropertiesPage() {
 
   return (
     <div className="w-full bg-[#0A0A0A] pt-40 sm:pt-52 pb-32 text-white relative z-10 overflow-hidden selection:bg-[#C9A050] selection:text-black">
-      
+
       {/* RICH LUXURY ACCENTS */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C9A050]/[0.02] blur-[150px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-[2200px] mx-auto px-4 sm:px-6 md:px-24 relative z-20">
-        
-        {/* HEADER INTRO TITLE MODULE */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 sm:mb-16 text-left border-b border-white/5 pb-8">
+
+        {/* 🏙️ HEADER INTRO TITLE MODULE - ✅ Safe Runtime Bounds Framework */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 sm:mb-16 text-left border-b border-white/5 pb-8 w-full font-sans">
           <div className="space-y-4 max-w-2xl">
-            <span className="text-[10px] tracking-[0.5em] font-black text-[#C9A050] uppercase block">
+            <span className="text-[10px] tracking-[0.4em] font-black text-[#C9A050]  block">
               ( SOUTH OF 635 PORTFOLIO MATRIX )
             </span>
-            <h1 className="text-3xl sm:text-6xl font-serif tracking-wide text-white uppercase font-bold leading-none">
-              THE LUXURY COLLECTION
+            {/* Main Title Description */}
+            <h1 className="text-4xl sm:text-6xl md:text-7xl text-white  font-black leading-none tracking-tight">
+              The Luxury Collection
             </h1>
-            <p className="text-[14px] sm:text-[15px] text-white/50 font-light tracking-wide leading-relaxed">
+            {/* Description Box */}
+            <p className="text-[15px] sm:text-[16px] md:text-[17px] text-white font-normal tracking-wide leading-relaxed">
               Explore ultra-exclusive private residential classifications, bespoke modernist estates, and high-ticket off-market luxury assets.
             </p>
           </div>
-          
-          <div className="text-[10px] sm:text-[11px] font-mono tracking-widest text-white/40 uppercase flex items-center gap-2 bg-[#141414] px-4 py-2.5 rounded-xl border border-white/5 shadow-2xl shrink-0">
+
+          {/* ✅ FIXED: Added optional chaining and safe state logical OR fallback to prevent undefined array crashes */}
+          <div className="text-[10px] sm:text-[11px] font-mono tracking-widest text-white/60  flex items-center gap-2 bg-[#121212] px-4 py-2.5 rounded-xl border border-white/5 shadow-2xl shrink-0 select-none font-bold">
             <Layers size={12} className="text-[#C9A050]" />
-            <span>Vault Database: {listings.length} Active Records</span>
+            <span>Vault Database: {listings?.length || 0} Active Records</span>
           </div>
         </div>
 
         {/* SEARCH & FILTERS CONTROLLERS PANEL */}
-        <div className="space-y-6 mb-12 bg-[#111111] p-4 sm:p-6 rounded-2xl border border-white/5 shadow-3xl">
-          <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-4">
-            
-            <div className="relative flex items-center flex-grow bg-[#1A1A1A] rounded-xl border border-white/5 px-4 focus-within:border-[#C9A050]/40 transition-colors">
-              <Search size={16} className="text-[#C9A050] shrink-0" />
-              <input 
-                type="text" 
+        {/* 🎛️ SEARCH & FILTERS CONTROLLERS PANEL - ✅ High Visibility Matte Contrast System */}
+        <div className="space-y-6 mb-12 bg-[#121212] p-4 sm:p-6 rounded-2xl border border-white/5 shadow-3xl w-full font-sans">
+          <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-5">
+
+            {/* Light Graphite Search Bar Container with Crystalline Placeholders */}
+            <div className="relative flex items-center flex-grow bg-[#1C1C1C] rounded-xl border border-white/10 px-4 focus-within:border-[#C9A050] transition-all duration-300 shadow-inner group">
+              {/* High contrast golden search icon indicator */}
+              <Search size={16} className="text-[#C9A050] shrink-0 drop-shadow-[0_2px_8px_rgba(201,160,80,0.15)]" />
+              <input
+                type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="SEARCH PORTFOLIO BY ESTATE NAME OR SPECIFIC DISTRICT..." 
-                className="bg-transparent w-full text-[11px] tracking-widest font-bold text-white outline-none placeholder-white/20 py-4 px-3 uppercase font-sans"
+                placeholder="SEARCH PORTFOLIO BY ESTATE NAME OR SPECIFIC DISTRICT..."
+                className="bg-transparent w-full text-xs tracking-[0.15em] font-black text-white outline-none placeholder-white/50 py-4 px-3 uppercase font-sans antialiased"
               />
             </div>
 
-            <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[9px] tracking-widest font-black uppercase">
+            {/* Filter Navigation Category Buttons */}
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[10px] tracking-widest font-black uppercase font-sans">
               {["ALL", "ESTATES", "PENTHOUSES", "OFF-MARKET"].map((cat) => (
                 <button
                   key={cat}
+                  type="button"
                   onClick={() => { setActiveFilter(cat); setSelectedProperty(null); }}
-                  className={`px-4 py-3 rounded-xl border transition-all duration-300 transform-gpu active:scale-95 whitespace-nowrap ${
-                    activeFilter === cat 
-                      ? "bg-[#C9A050] text-black border-[#C9A050] font-black shadow-xl" 
-                      : "bg-[#1A1A1A] text-white/60 border-white/5 hover:border-[#C9A050]/30 hover:text-white"
-                  }`}
+                  className={`px-5 py-3.5 rounded-xl border transition-all duration-300 transform-gpu active:scale-95 whitespace-nowrap font-black cursor-pointer ${activeFilter === cat
+                      ? "bg-[#C9A050] text-black border-[#C9A050] shadow-xl"
+                      : "bg-[#1C1C1C] text-white border-white/10 hover:border-[#C9A050] hover:text-[#C9A050]"
+                    }`}
                 >
                   {cat}
                 </button>
@@ -190,36 +197,37 @@ export default function PropertiesPage() {
           </div>
         </div>
 
-        {/* PROPERTY LISTINGS SHOWCASE GRID */}
-        {filteredListings.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        {/* ⚡ PROPERTY LISTINGS SHOWCASE GRID - ✅ High Contrast Unified Master Matrix */}
+        {filteredListings && filteredListings.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch w-full font-sans">
             {filteredListings.map((item) => {
               const isExpanded = selectedProperty === item.id;
-              
+
               return (
                 <div
                   key={item.id}
-                  className={`flex flex-col justify-between bg-[#141414] border rounded-2xl overflow-hidden cursor-pointer transform-gpu transition-all duration-500 shadow-2xl will-change-transform ${
-                    isExpanded ? "border-[#C9A050] lg:col-span-3 lg:flex-row" : "border-white/5 hover:border-[#C9A050]/20 sm:hover:-translate-y-1.5"
-                  }`}
+                  className={`flex flex-col justify-between bg-[#121212] border rounded-2xl overflow-hidden cursor-pointer transform-gpu transition-all duration-500 shadow-2xlComplex will-change-transform ${isExpanded
+                      ? "border-[#C9A050] lg:col-span-3 lg:flex-row"
+                      : "border-white/5 hover:border-[#C9A050]/40 sm:hover:-translate-y-1.5"
+                    }`}
                   onClick={() => setSelectedProperty(isExpanded ? null : item.id)}
                 >
-                  
-                  {/* Image Framework Area */}
-                  <div className={`relative overflow-hidden bg-[#1A1A1A] shrink-0 transition-all duration-500 ${
-                    isExpanded ? "w-full lg:w-[45%] h-[260px] sm:h-[320px] lg:h-auto" : "h-[220px] sm:h-[260px] w-full"
-                  }`}>
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-black/30 z-10 opacity-90" />
-                    <img src={item.img} alt={item.title} className="w-full h-full object-cover opacity-85" loading="lazy" />
-                    
-                    <span className="absolute top-4 left-4 z-20 bg-black/90 backdrop-blur-md text-[#C9A050] text-[9px] font-black tracking-[0.2em] uppercase px-3.5 py-2 rounded-md border border-[#C9A050]/40 shadow-xl">
+
+                  {/* Image Framework Area Layout */}
+                  <div className={`relative overflow-hidden bg-[#1A1A1A] shrink-0 transition-all duration-500 ${isExpanded ? "w-full lg:w-[45%] h-[280px] sm:h-[340px] lg:h-auto" : "h-[220px] sm:h-[260px] w-full"
+                    }`}>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-black/40 z-10 opacity-75" />
+                    <img src={item.img} alt={item.title} className="w-full h-full object-cover opacity-75 contrast-110 brightness-95" loading="lazy" />
+
+                    {/* Premium Category Tag */}
+                    <span className="absolute top-4 left-4 z-20 bg-black/90 backdrop-blur-md text-[#C9A050] text-[9px] font-black tracking-[0.2em] uppercase px-3.5 py-2 rounded-lg border border-[#C9A050]/20 shadow-xl">
                       {item.tag}
                     </span>
 
-                    <span className={`absolute bottom-4 right-4 z-20 text-[9px] font-black font-mono tracking-widest uppercase px-3 py-1.5 rounded-md shadow-md ${
-                      item.status === "AVAILABLE" ? "bg-emerald-950/90 text-emerald-400 border border-emerald-500/20" :
-                      item.status === "CONFIDENTIAL" ? "bg-amber-950/90 text-amber-400 border border-amber-500/20" : "bg-white/10 text-white/60 border border-white/5"
-                    }`}>
+                    {/* Asset Status Badge */}
+                    <span className={`absolute bottom-4 right-4 z-20 text-[9px] font-black font-mono tracking-widest uppercase px-3 py-1.5 rounded-md shadow-md ${item.status === "AVAILABLE" ? "bg-emerald-950/90 text-emerald-400 border border-emerald-500/20" :
+                        item.status === "CONFIDENTIAL" ? "bg-amber-950/90 text-amber-400 border border-amber-500/20" : "bg-white/10 text-white/80 border border-white/10"
+                      }`}>
                       {item.status}
                     </span>
                   </div>
@@ -230,67 +238,70 @@ export default function PropertiesPage() {
                       <div className="flex justify-between items-start gap-4">
                         <div>
                           <span className="text-[9px] font-mono tracking-widest text-[#C9A050] font-black uppercase block mb-1">ID: {item.id}</span>
-                          <h3 className="font-serif text-xl sm:text-2xl text-white font-bold tracking-wide">
+                          {/* ✅ FIXED: Shifted to signature Montserrat layout with extra-heavy black weight */}
+                          <h3 className="font-sans text-xl sm:text-2xl text-white font-black  tracking-wide">
                             {item.title}
                           </h3>
                         </div>
-                        <div className="p-1.5 rounded-full bg-white/5 border border-white/10 text-[#C9A050] shrink-0">
-                          <ArrowUpRight size={14} className={`transition-transform duration-500 ${isExpanded ? "rotate-45" : ""}`} />
+                        <div className="p-1.5 rounded-full bg-white/10 border border-white/10 text-[#C9A050] shrink-0">
+                          <ArrowUpRight size={14} className={`stroke-[2.5] transition-transform duration-500 ${isExpanded ? "rotate-45" : ""}`} />
                         </div>
                       </div>
 
-                      <p className="text-[10px] font-mono tracking-widest text-white/40 uppercase flex items-center gap-1.5">
+                      <p className="text-[10px] font-mono tracking-widest text-white/50 uppercase flex items-center gap-1.5 font-bold">
                         <MapPin size={11} className="text-[#C9A050]" />
                         <span>{item.location}</span>
                       </p>
 
-                      <p className="text-[14px] text-white/70 font-light leading-relaxed tracking-wide font-sans line-clamp-2 sm:line-clamp-none">
+                      {/* ✅ FIXED: Pure high-contrast white text for description at standard readability limits */}
+                      <p className="text-[15px] text-white font-normal leading-relaxed tracking-wide font-sans line-clamp-2 sm:line-clamp-none">
                         {item.description}
                       </p>
                     </div>
 
-                    {/* Extended Parameter View Modules */}
-                    {isExpanded && (
+                    {/* Extended Parameter View Modules - Safe optional rendering array checks */}
+                    {isExpanded && item.features && (
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
                         <div className="space-y-2">
-                          <h4 className="text-[9px] tracking-widest text-[#C9A050] font-black uppercase flex items-center gap-1"><Sparkles size={10}/> SPECIFICATIONS</h4>
-                          <ul className="grid grid-cols-1 gap-1 text-xs font-light text-white/80 font-sans">
+                          <h4 className="text-[9px] tracking-widest text-[#C9A050] font-black  flex items-center gap-1"><Sparkles size={10} /> SPECIFICATIONS</h4>
+                          <ul className="grid grid-cols-1 gap-1 text-xs font-bold text-white font-sans">
                             {item.features.map((feature, fIdx) => (
                               <li key={fIdx} className="flex items-center gap-1.5"><CheckCircle2 size={12} className="text-[#C9A050]" /> {feature}</li>
                             ))}
                           </ul>
                         </div>
-                        <div className="space-y-2 text-xs font-light text-white/50 font-mono">
-                          <p className="flex justify-between border-b border-white/5 pb-1"><span>ARCHITECT:</span> <span className="text-white font-bold">{item.architect}</span></p>
-                          <p className="flex justify-between border-b border-white/5 pb-1"><span>YEAR:</span> <span className="text-white font-bold">{item.builtYear}</span></p>
+                        <div className="space-y-2 text-xs font-bold text-white/60 font-mono">
+                          <p className="flex justify-between border-b border-white/5 pb-1"><span>ARCHITECT:</span> <span className="text-white font-black">{item.architect}</span></p>
+                          <p className="flex justify-between border-b border-white/5 pb-1"><span>YEAR:</span> <span className="text-white font-black">{item.builtYear}</span></p>
                         </div>
                       </div>
                     )}
 
                     {/* Horizontal Dimensional Specification Vector Row */}
-                    <div className="grid grid-cols-3 gap-2 border-y border-white/5 py-4 text-white text-[11px] sm:text-xs font-medium tracking-wide">
-                      <div className="flex items-center gap-1.5 justify-center bg-white/[0.01] py-2 rounded-xl border border-white/5">
+                    <div className="grid grid-cols-3 gap-2 border-y border-white/5 py-4 text-white text-[11px] sm:text-xs font-bold tracking-wide">
+                      <div className="flex items-center gap-1.5 justify-center bg-white/5 py-2 rounded-xl border border-white/5">
                         <BedDouble size={13} className="text-[#C9A050]" />
                         <span>{item.beds} Bds</span>
                       </div>
-                      <div className="flex items-center gap-1.5 justify-center bg-white/[0.01] py-2 rounded-xl border border-white/5">
+                      <div className="flex items-center gap-1.5 justify-center bg-white/5 py-2 rounded-xl border border-white/5">
                         <Bath size={13} className="text-[#C9A050]" />
                         <span>{item.baths} Bth</span>
                       </div>
-                      <div className="flex items-center gap-1.5 justify-center bg-white/[0.01] py-2 rounded-xl border border-white/5">
+                      <div className="flex items-center gap-1.5 justify-center bg-white/5 py-2 rounded-xl border border-white/5">
                         <Square size={12} className="text-[#C9A050]" />
                         <span>{item.sqft} SqFt</span>
                       </div>
                     </div>
 
-                    {/* ✅ FIX: Vertical column transformation layout on mobile to prevent layout overflow constraints */}
-                    <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pt-2 border-t border-white/5 sm:border-none">
+                    {/* Action Buttons Gateway Bar */}
+                    <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 pt-2 border-t border-white/5 sm:border-none w-full">
                       <div className="text-left">
-                        <span className="text-[9px] tracking-[0.2em] text-white/30 font-black uppercase block">VALUATION BASELINE</span>
-                        <span className="text-2xl font-serif text-[#C9A050] font-black tracking-wide block mt-0.5">{item.price}</span>
+                        <span className="text-[9px] tracking-[0.2em] text-white/40 font-black uppercase block">VALUATION BASELINE</span>
+                        {/* ✅ FIXED: Sourced directly into Montserrat font-black layout line */}
+                        <span className="text-2xl font-sans text-[#C9A050] font-black tracking-wide block mt-0.5">{item.price}</span>
                       </div>
-                      <button className="w-full sm:w-auto bg-[#C9A050] text-black text-[10px] font-black tracking-widest uppercase px-6 py-4 rounded-xl hover:bg-white transition-all duration-300 shadow-xl shrink-0 transform-gpu active:scale-98">
-                        {item.category === "OFF-MARKET" ? "Request Private Vetting" : "Gain Private Dossier"}
+                      <button type="button" className="w-full sm:w-auto bg-[#C9A050] text-black text-[11px] font-black tracking-widest uppercase px-6 py-4 rounded-xl hover:bg-white hover:text-black transition-all duration-300 shadow-xl shrink-0 transform-gpu active:scale-98 cursor-pointer font-sans">
+                        {item.category === "OFF-MARKET" ? "Vet Asset" : "Get Dossier"}
                       </button>
                     </div>
 
@@ -301,9 +312,9 @@ export default function PropertiesPage() {
             })}
           </div>
         ) : (
-          <div className="text-center py-24 bg-[#111111] rounded-2xl border border-white/5 max-w-xl mx-auto space-y-4">
-            <p className="text-white/40 text-xs tracking-widest uppercase font-mono">No Matching Architectural Records Encountered</p>
-            <button onClick={() => { setSearchQuery(""); setActiveFilter("ALL"); }} className="text-[#C9A050] text-[10px] tracking-widest uppercase font-black hover:underline">
+          <div className="text-center py-24 bg-[#121212] rounded-2xl border border-white/5 max-w-xl mx-auto space-y-4">
+            <p className="text-white text-xs tracking-widest uppercase font-mono font-bold">No Matching Architectural Records Encountered</p>
+            <button onClick={() => { setSearchQuery(""); setActiveFilter("ALL"); }} className="text-[#C9A050] text-[10px] tracking-widest uppercase font-black hover:underline cursor-pointer">
               Reset Target Filter Matrix
             </button>
           </div>
