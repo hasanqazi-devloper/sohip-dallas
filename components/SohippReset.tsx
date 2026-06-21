@@ -1,9 +1,21 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { m } from "framer-motion";
 
 export default function SohippReset() {
   const resetImg = "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=2070";
+  const [isMobile, setIsMobile] = useState(false);
+
+  // ✅ Client side window extraction framework to bypass scroll calculation latency on mobile touch track
+  useEffect(() => {
+    const checkDeviceWidth = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkDeviceWidth();
+    window.addEventListener("resize", checkDeviceWidth);
+    return () => window.removeEventListener("resize", checkDeviceWidth);
+  }, []);
 
   return (
     // Matte charcoal block alignment
@@ -16,7 +28,7 @@ export default function SohippReset() {
           
           {/* Bright gold signature tracking title synchronized to #C9A050 */}
           <m.span 
-            initial={{ opacity: 0 }}
+            initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.3 }}
@@ -27,7 +39,7 @@ export default function SohippReset() {
           
           {/* Enhanced tight tracking typography hook */}
           <m.h2 
-            initial={{ opacity: 0, y: 15 }}
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
@@ -39,7 +51,7 @@ export default function SohippReset() {
           
           {/* P tag setup: strict 17px, solid crisp reading texture */}
           <m.p 
-            initial={{ opacity: 0 }}
+            initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4 }}
@@ -49,7 +61,7 @@ export default function SohippReset() {
           </m.p>
 
           <m.div
-            initial={{ opacity: 0 }}
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4 }}
@@ -62,20 +74,19 @@ export default function SohippReset() {
         </div>
 
         {/* VISUAL SHOWCASE FRAMEWORK */}
-        {/* ✅ Absolute mobile GPU hardware transform mechanics mapping */}
         <m.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="lg:col-span-6 relative h-[350px] sm:h-[450px] lg:h-auto rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#161616] group order-2 lg:order-2 transform-gpu will-change-transform"
         >
-          <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
+          <div className="absolute inset-0 bg-black/10 sm:group-hover:bg-transparent transition-colors duration-500 z-10" />
           <img 
             src={resetImg} 
             alt="Luxury Interior Staging Transformation" 
             decoding="async"
-            className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-95 group-hover:scale-105 transition-all duration-700 object-center" 
+            className="absolute inset-0 w-full h-full object-cover opacity-75 sm:group-hover:opacity-95 sm:group-hover:scale-105 transition-all duration-700 object-center will-change-transform" 
             loading="lazy"
           />
         </m.div>

@@ -1,10 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Testimonials() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // ✅ Client side screen extraction check to bypass dynamic slide parsing on touch screens
+  useEffect(() => {
+    const checkDeviceWidth = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkDeviceWidth();
+    window.addEventListener("resize", checkDeviceWidth);
+    return () => window.removeEventListener("resize", checkDeviceWidth);
+  }, []);
+
   const reviews = [
     {
       name: "Sarah M.",
@@ -28,8 +41,6 @@ export default function Testimonials() {
     }
   ];
 
-  const [activeIndex, setActiveIndex] = useState(0);
-
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % reviews.length);
   };
@@ -49,7 +60,7 @@ export default function Testimonials() {
         {/* SECTION HEADER */}
         <div className="text-center mb-16 md:mb-24">
           <m.span
-            initial={{ opacity: 0 }}
+            initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.3 }}
@@ -58,7 +69,7 @@ export default function Testimonials() {
             ( AUTHENTIC EXPERIENCES )
           </m.span>
           <m.h2
-            initial={{ opacity: 0, y: 15 }}
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
@@ -69,15 +80,15 @@ export default function Testimonials() {
           <div className="w-16 h-[1px] bg-[#C9A050]/40 mx-auto mt-6"></div>
         </div>
 
-        {/* ✅ LUXURY SLIDER INTERACTION GATEWAY */}
+        {/* LUXURY SLIDER INTERACTION GATEWAY */}
         <div className="relative max-w-3xl mx-auto">
           <AnimatePresence mode="wait">
             <m.div
               key={activeIndex}
-              initial={{ opacity: 0, x: 15 }}
+              initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: 15 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -15 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              exit={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -15 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
               className="bg-[#141414] p-8 md:p-16 rounded-2xl border border-white/5 shadow-2xl relative group overflow-hidden min-h-[320px] flex flex-col justify-between transform-gpu"
             >
               {/* Luxury gold indicator line */}
@@ -116,7 +127,7 @@ export default function Testimonials() {
             </m.div>
           </AnimatePresence>
 
-          {/* ✅ MINIMALIST SLIDER CONTROLS NAVIGATION BUTTONS */}
+          {/* MINIMALIST SLIDER CONTROLS NAVIGATION BUTTONS */}
           <div className="flex justify-center items-center gap-4 mt-8">
             <button
               onClick={handlePrev}

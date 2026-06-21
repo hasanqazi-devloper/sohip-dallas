@@ -39,29 +39,30 @@ export default function Navbar({ isScrolled, isMenuOpen, setIsMenuOpen }: Navbar
         </div>
 
         {/* MAIN INTERACTIVE NAV */}
-        <div className={`w-full flex justify-between items-center px-6 md:px-24 transition-all duration-500 ${isScrolled ? 'bg-[#0D0D0D]/95 backdrop-blur-md py-4 border-b border-white/5 shadow-2xl' : 'bg-gradient-to-b from-black/95 via-black/40 to-transparent py-6 md:py-8'}`}>
+        {/* ✅ White border line completely wiped out on scroll, replaced with clean soft premium shadow */}
+        <div className={`w-full flex justify-between items-center px-6 md:px-24 transition-all duration-500 ${isScrolled ? 'bg-[#0D0D0D]/95 backdrop-blur-md py-4 shadow-[0_15px_40px_rgba(0,0,0,0.6)]' : 'bg-gradient-to-b from-black/95 via-black/40 to-transparent py-6 md:py-8'}`}>
           <Link href="/" className="flex items-center gap-4 group cursor-pointer">
             <div className="h-10 w-10 md:h-12 md:w-12 rounded-full overflow-hidden border border-white/10 flex items-center justify-center bg-white/5 backdrop-blur-sm transition-transform group-hover:scale-105">
               <img src={logoImg} alt="SOHIP Dallas Logo" className="h-full w-full object-cover" onError={(e)=>{e.currentTarget.style.display='none'}} />
             </div>
-            <span className="text-base md:text-lg font-serif tracking-[0.3em] uppercase hidden sm:block text-white group-hover:text-[#C9A050] transition-colors duration-300">SOHIP DALLAS</span>
+            <span className="text-base md:text-lg font-serif tracking-[0.3em] uppercase hidden sm:block text-white group-hover:text-[#C9A050] transition-colors duration-300 font-medium">SOHIP DALLAS</span>
           </Link>
 
-          {/* DESKTOP LINKS - Locked clean grid font sizing details */}
-          <div className="hidden lg:flex gap-10 text-[10px] tracking-[0.3em] uppercase font-black">
+          {/* DESKTOP LINKS - ✅ Sizing & visibility locked at premium crisp text-xs standard */}
+          <div className="hidden lg:flex gap-10 text-xs tracking-[0.25em] uppercase font-semibold">
             {navItems.map((item) => {
               const isActive = pathname === item.path;
               return (
                 <Link 
                   key={item.path} 
                   href={item.path} 
-                  className={`transition-colors relative pb-1 ${isActive ? 'text-[#C9A050]' : 'text-white/60 hover:text-white'}`}
+                  className={`transition-colors relative pb-1.5 tracking-widest ${isActive ? 'text-[#C9A050]' : 'text-white/85 hover:text-white'}`}
                 >
                   {item.name}
                   {isActive && (
                     <m.span 
                       layoutId="activeNavLine"
-                      className="absolute bottom-0 left-0 w-full h-[1px] bg-[#C9A050]" 
+                      className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#C9A050]" 
                     />
                   )}
                 </Link>
@@ -73,40 +74,76 @@ export default function Navbar({ isScrolled, isMenuOpen, setIsMenuOpen }: Navbar
             <Link href="/contact" className="hidden md:block text-[10px] tracking-[0.3em] border border-[#C9A050]/40 bg-white/5 px-6 py-3 rounded-full uppercase hover:bg-[#C9A050] hover:text-black hover:border-[#C9A050] transition-all font-black text-center text-white transform-gpu active:scale-95">
               Gain VIP Access
             </Link>
-            <button className="lg:hidden text-white p-2 outline-none" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <button className="lg:hidden text-white p-2 outline-none transition-transform active:scale-90" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? <X size={26} className="text-[#C9A050]" /> : <Menu size={26} />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* ⚡ ADVANCED HARDWARE-ACCELERATED MOBILE DRAWER */}
+      {/* ⚡ ADVANCED DYNAMIC CINEMATIC MOBILE DRAWER OVERLAY */}
       <AnimatePresence>
         {isMenuOpen && (
           <m.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-0 z-[110] bg-[#0D0D0D]/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8 transform-gpu"
+            initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            animate={{ opacity: 1, backdropFilter: "blur(24px)" }}
+            exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[110] bg-[#0A0A0A]/95 flex flex-col items-center justify-center gap-8 transform-gpu"
           >
-            <button className="absolute top-8 right-8 text-white p-2 outline-none" onClick={() => setIsMenuOpen(false)}>
-              <X size={30} className="text-[#C9A050]" />
+            {/* Top Logo Watermark in Drawer */}
+            <div className="absolute top-6 left-6 flex items-center gap-3 opacity-40">
+              <div className="h-8 w-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5">
+                <img src={logoImg} alt="SOHIP Dallas Logo" className="h-full w-full object-cover" />
+              </div>
+              <span className="text-xs font-serif tracking-widest text-white uppercase">SOHIP DALLAS</span>
+            </div>
+
+            <button className="absolute top-6 right-6 text-white p-2 outline-none transition-transform active:scale-90" onClick={() => setIsMenuOpen(false)}>
+              <X size={28} className="text-[#C9A050]" />
             </button>
-            {navItems.map((item) => {
-              const isMobileActive = pathname === item.path;
-              return (
-                <div key={item.path} className="overflow-hidden">
-                  <Link 
-                    href={item.path} 
-                    onClick={() => setIsMenuOpen(false)} 
-                    className={`text-2xl sm:text-3xl font-serif italic tracking-wide block transition-colors py-2 ${isMobileActive ? 'text-[#C9A050] font-bold' : 'text-white/60 hover:text-white'}`}
+
+            {/* Nav Menu Content Array Container */}
+            <div className="flex flex-col items-center gap-6 w-full max-w-sm px-6">
+              {navItems.map((item, i) => {
+                const isMobileActive = pathname === item.path;
+                return (
+                  <m.div 
+                    key={item.path} 
+                    className="w-full text-center"
+                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                    transition={{ duration: 0.4, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    {item.name}
-                  </Link>
-                </div>
-              );
-            })}
+                    <Link 
+                      href={item.path} 
+                      onClick={() => setIsMenuOpen(false)} 
+                      className={`text-2xl sm:text-3xl font-serif italic tracking-wide block transition-all py-3 px-4 rounded-xl ${isMobileActive ? 'text-black bg-[#C9A050] font-bold shadow-xl' : 'text-white/80 hover:text-white hover:bg-white/5'}`}
+                    >
+                      {item.name}
+                    </Link>
+                  </m.div>
+                );
+              })}
+
+              {/* Mobile Dedicated CTA Button for Luxury Inquiries */}
+              <m.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.4, delay: navItems.length * 0.05 }}
+                className="w-full pt-4 border-t border-white/5 mt-2"
+              >
+                <Link
+                  href="/contact"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="w-full block text-center bg-transparent border border-[#C9A050] text-[#C9A050] text-xs font-black tracking-[0.25em] uppercase py-4 rounded-full active:bg-[#C9A050] active:text-black transition-colors"
+                >
+                  Gain VIP Access Matrix
+                </Link>
+              </m.div>
+            </div>
           </m.div>
         )}
       </AnimatePresence>
