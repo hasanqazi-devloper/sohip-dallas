@@ -7,7 +7,7 @@ import { Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 export default function ContactForm() {
   const [isMobile, setIsMobile] = useState(false);
 
-  // ✅ Viewport safety hook to kill dynamic motion parsing bottlenecks on touch screens
+  // ✅ Viewport tracking to protect layout runtime computation flow flawlessly
   useEffect(() => {
     const checkDeviceWidth = () => {
       setIsMobile(window.innerWidth < 768);
@@ -19,9 +19,10 @@ export default function ContactForm() {
 
   return (
     // Pure Obsidian Black Surface alignment for the final action gate
-    <section id="contact" className="py-16 md:py-32 bg-[#050505] border-t border-white/5 scroll-mt-24 relative z-10">
-      {/* Gap grid setting optimized for fluid responsive layout matching */}
-      <div className="max-w-[1200px] mx-auto px-6 md:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch">
+    <section id="contact" className="py-20 md:py-32 bg-[#050505] border-t border-white/5 scroll-mt-24 relative z-10 w-full">
+      
+      {/* ✅ FIX: Bounded wrapper updated to max-w-[1400px] to align perfectly with header grids and heroes */}
+      <div className="max-w-[1800px] mx-auto px-6 md:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch w-full">
         
         {/* CORPORATE INFORMATION LAYER */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-8 text-left py-2">
@@ -41,7 +42,7 @@ export default function ContactForm() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="text-3xl sm:text-4xl md:text-6xl font-serif italic text-white font-medium leading-none"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif italic text-white font-medium leading-tight uppercase"
             >
               Connect Privately.
             </m.h2>
@@ -51,30 +52,31 @@ export default function ContactForm() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.4 }}
-              className="text-[17px] text-white font-light leading-relaxed opacity-85 max-w-sm"
+              className="text-[15px] sm:text-[16px] text-white/50 font-light font-sans leading-relaxed max-w-sm tracking-wide"
             >
               Unlock structured local analytics, premium off-market listing updates, and private DFW investment vectors direct to your corporate network hub.
             </m.p>
           </div>
 
           {/* Contact Cards Stack - Pushed middle-to-bottom automatically with #C9A050 sync */}
-          <div className="space-y-4 pt-6 text-[17px] text-white font-light tracking-wide opacity-90 border-t border-white/5 max-w-sm">
+          <div className="space-y-4 pt-8 text-[14px] sm:text-[15px] text-white/80 font-light tracking-wide font-sans border-t border-white/5 max-w-sm">
             <p className="flex items-center gap-4 group cursor-pointer hover:text-[#C9A050] transition-colors duration-300">
-              <Phone size={16} className="text-[#C9A050]" /> (214) 428-1121
+              <Phone size={14} className="text-[#C9A050] shrink-0" /> (214) 428-1121
             </p>
-            <p className="flex items-center gap-4 group cursor-pointer hover:text-[#C9A050] transition-colors duration-300 uppercase text-sm tracking-widest">
-              <Mail size={16} className="text-[#C9A050]" /> jennifer@sohipdallas.com
+            <p className="flex items-center gap-4 group cursor-pointer hover:text-[#C9A050] transition-colors duration-300 uppercase tracking-widest text-xs">
+              {/* ✅ Domain corrected from .com to unified premium .homes matrix routing link */}
+              <Mail size={14} className="text-[#C9A050] shrink-0" /> jennifer@sohipdallas.homes
             </p>
-            <p className="flex items-center gap-4 opacity-75 leading-snug">
-              <MapPin size={16} className="text-[#C9A050]" /> 
+            <div className="flex items-start gap-4 text-white/50 leading-relaxed">
+              <MapPin size={14} className="text-[#C9A050] shrink-0 mt-1" /> 
               <span>650 Fort Worth Ave, <br /> Dallas, Texas</span>
-            </p>
+            </div>
           </div>
 
           {/* Legal Compliance Block - Anchored strictly to the bottom edge */}
-          <div className="pt-4 text-[10px] tracking-widest uppercase text-white/30 space-y-2 font-mono max-w-md border-t border-white/5 lg:border-none">
-            <p className="flex items-center gap-2"><ShieldCheck size={12} className="text-[#C9A050]/60" /> Brokerage Compliance Framework Active</p>
-            <p>JPAR Real Estate Corporation Systems</p>
+          <div className="pt-6 text-[9px] tracking-widest uppercase text-white/30 space-y-2 font-mono max-w-md border-t border-white/5 lg:border-none">
+            <p className="flex items-center gap-2 font-black text-[#C9A050]/70"><ShieldCheck size={12} className="shrink-0" /> Brokerage Compliance Framework Active</p>
+            <p>JPAR Real Estate Corporation Systems • License #0599698</p>
           </div>
         </div>
 
@@ -85,38 +87,43 @@ export default function ContactForm() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.4, ease: "easeOut" }}
           onSubmit={(e) => e.preventDefault()} 
-          className="lg:col-span-7 space-y-8 bg-[#141414] p-8 md:p-12 border border-white/5 rounded-2xl shadow-2xl relative flex flex-col justify-center overflow-hidden group transform-gpu"
+          className="lg:col-span-7 space-y-6 bg-[#141414] p-6 sm:p-10 md:p-12 border border-white/5 rounded-2xl shadow-3xl relative flex flex-col justify-center overflow-hidden group transform-gpu w-full text-left"
         >
           {/* Subtle inside tracking animation border updated to new brand hex layout line */}
-          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#C9A050]/20 to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#C9A050]/20 to-transparent" />
 
-          <div className="space-y-1">
+          <div className="space-y-1 w-full">
+            <label className="text-[9px] font-mono tracking-widest text-white/30 uppercase block font-black">Identified Identity</label>
             <input 
               type="text" 
-              placeholder="FULL NAME" 
-              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-widest font-bold placeholder-white/20" 
+              required
+              placeholder="ENTER YOUR FULL LEGAL NAME..." 
+              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-widest font-bold placeholder-white/15 font-sans" 
             />
           </div>
 
-          <div className="space-y-1">
+          <div className="space-y-1 w-full">
+            <label className="text-[9px] font-mono tracking-widest text-white/30 uppercase block font-black">Communication Routing</label>
             <input 
               type="email" 
-              placeholder="EMAIL ADDRESS" 
-              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-widest font-bold placeholder-white/20" 
+              required
+              placeholder="ENTER SECURE EMAIL ADDRESS..." 
+              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-widest font-bold placeholder-white/15 font-sans" 
             />
           </div>
 
-          <div className="space-y-1">
+          <div className="space-y-1 w-full">
+            <label className="text-[9px] font-mono tracking-widest text-white/30 uppercase block font-black">Confidential Parameters</label>
             <textarea 
-              placeholder="SECURE MESSAGE PARAMETERS" 
+              placeholder="DESCRIBE THE PARAMETERS OF YOUR ACQUISITION OR ASSET INTEL NEEDS..." 
               rows={4} 
-              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-widest font-bold placeholder-white/20 resize-none" 
+              className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-widest font-bold placeholder-white/15 resize-none font-sans" 
             />
           </div>
 
-          <div className="pt-4">
-            <button className="w-full bg-[#C9A050] text-black py-5 tracking-[0.4em] font-black text-xs hover:bg-white transition-colors uppercase rounded-full shadow-xl sm:active:scale-[0.98] duration-300 transform-gpu">
-              Gain VIP Access Matrix
+          <div className="pt-4 w-full">
+            <button className="w-full bg-[#C9A050] text-black py-5 tracking-[0.35em] font-black text-xs hover:bg-white transition-colors uppercase rounded-full shadow-2xl sm:active:scale-[0.98] duration-300 transform-gpu cursor-pointer">
+              Transmit VIP Access Matrix
             </button>
           </div>
         </m.form>

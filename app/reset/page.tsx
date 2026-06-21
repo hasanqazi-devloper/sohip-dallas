@@ -43,7 +43,7 @@ export default function HomeResetPage() {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C9A050]/[0.02] blur-[150px] rounded-full pointer-events-none z-0" />
       <div className="absolute bottom-1/4 left-0 w-[500px] h-[500px] bg-[#C9A050]/[0.015] blur-[130px] rounded-full pointer-events-none z-0" />
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-24 relative z-20">
+      <div className="max-w-[2200px] mx-auto px-6 md:px-24 relative z-20">
         
         {/* 🏙️ SECTION 1: THE SIGNATURE RESHAPE INTRO */}
         <div className="max-w-3xl text-left space-y-4 mb-20 border-b border-white/5 pb-12">

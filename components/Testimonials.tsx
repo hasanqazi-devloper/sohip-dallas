@@ -8,7 +8,7 @@ export default function Testimonials() {
   const [isMobile, setIsMobile] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // ✅ Client side screen extraction check to bypass dynamic slide parsing on touch screens
+  // ✅ Client side viewport tracking to freeze memory bottleneck configurations
   useEffect(() => {
     const checkDeviceWidth = () => {
       setIsMobile(window.innerWidth < 768);
@@ -50,21 +50,22 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-20 md:py-32 bg-[#000000] border-t border-white/5 relative z-10 overflow-hidden">
+    <section id="testimonials" className="py-20 md:py-32 bg-[#000000] border-t border-white/5 relative z-10 overflow-hidden w-full">
       
       {/* BACKGROUND GRAPHIC ACCENT */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#C9A050]/[0.02] blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-[1200px] mx-auto px-6 md:px-24 relative z-10">
+      {/* ✅ Bounded framework scaled to standard max bounds */}
+      <div className="max-w-[1800px] mx-auto px-6 md:px-24 relative z-10 w-full">
         
         {/* SECTION HEADER */}
-        <div className="text-center mb-16 md:mb-24">
+        <div className="text-center mb-16 md:mb-24 space-y-4">
           <m.span
             initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.3 }}
-            className="text-[10px] tracking-[0.8em] uppercase font-black block mb-4 text-[#C9A050]"
+            className="text-[10px] tracking-[0.8em] uppercase font-black block text-[#C9A050]"
           >
             ( AUTHENTIC EXPERIENCES )
           </m.span>
@@ -73,86 +74,91 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-2xl sm:text-3xl md:text-5xl font-serif tracking-wide text-white font-medium"
+            className="text-2xl sm:text-3xl md:text-5xl font-serif tracking-wide text-white font-medium uppercase"
           >
             What Our Elite Network Says
           </m.h2>
-          <div className="w-16 h-[1px] bg-[#C9A050]/40 mx-auto mt-6"></div>
+          <div className="w-16 h-[1px] bg-[#C9A050]/40 mx-auto mt-4"></div>
         </div>
 
         {/* LUXURY SLIDER INTERACTION GATEWAY */}
-        <div className="relative max-w-3xl mx-auto">
-          <AnimatePresence mode="wait">
-            <m.div
-              key={activeIndex}
-              initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: 15 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -15 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="bg-[#141414] p-8 md:p-16 rounded-2xl border border-white/5 shadow-2xl relative group overflow-hidden min-h-[320px] flex flex-col justify-between transform-gpu"
-            >
-              {/* Luxury gold indicator line */}
-              <div className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-[#C9A050] to-transparent w-full" />
-              <Quote size={80} className="absolute -bottom-4 -right-4 text-white/[0.01] pointer-events-none transform -rotate-12" />
+        <div className="relative max-w-3xl mx-auto w-full">
+          
+          <div className="relative min-h-[340px] sm:min-h-[280px] md:min-h-[300px] w-full overflow-hidden">
+            <AnimatePresence mode="wait">
+              <m.div
+                key={activeIndex}
+                initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="w-full bg-[#141414] p-8 md:p-14 rounded-2xl border border-white/5 shadow-3xl relative group flex flex-col justify-between transform-gpu text-left"
+              >
+                {/* Luxury gold indicator line */}
+                <div className="absolute top-0 left-0 h-[2px] bg-gradient-to-r from-[#C9A050] to-transparent w-full" />
+                <Quote size={80} className="absolute -bottom-4 -right-4 text-white/[0.01] pointer-events-none transform -rotate-12" />
 
-              <div className="space-y-6">
-                {/* 5-Star Premium Layout Indicator */}
-                <div className="flex gap-1.5 text-[#C9A050]">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={11} fill="#C9A050" strokeWidth={0} />
-                  ))}
-                </div>
+                <div className="space-y-6">
+                  {/* 5-Star Premium Layout Indicator */}
+                  <div className="flex gap-1.5 text-[#C9A050]">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={10} fill="#C9A050" strokeWidth={0} />
+                    ))}
+                  </div>
 
-                {/* Text scale configured at sharp 17px metrics standard */}
-                <p className="text-[17px] text-white font-serif tracking-wide leading-relaxed italic opacity-90">
-                  "{reviews[activeIndex].text}"
-                </p>
-              </div>
-
-              {/* Author Details Block */}
-              <div className="pt-6 mt-8 border-t border-white/5 flex items-center justify-between">
-                <div>
-                  <h4 className="font-serif text-white text-base md:text-lg font-bold">
-                    {reviews[activeIndex].name}
-                  </h4>
-                  <p className="text-[#C9A050] text-[10px] tracking-[0.2em] uppercase mt-1 font-black">
-                    {reviews[activeIndex].role}
+                  {/* Text scale configured at sharp metrics standard */}
+                  <p className="text-[15px] sm:text-[17px] md:text-[18px] text-white/90 font-serif tracking-wide leading-relaxed italic">
+                    "{reviews[activeIndex].text}"
                   </p>
                 </div>
 
-                <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/20">
-                  <span className="text-[10px] font-mono">SO</span>
+                {/* Author Details Block */}
+                <div className="pt-6 mt-8 border-t border-white/5 flex items-center justify-between w-full">
+                  <div>
+                    <h4 className="font-serif text-white text-base md:text-lg font-bold uppercase tracking-wide">
+                      {reviews[activeIndex].name}
+                    </h4>
+                    <p className="text-[#C9A050] text-[9px] sm:text-[10px] tracking-[0.2em] uppercase mt-1 font-black font-sans">
+                      {reviews[activeIndex].role}
+                    </p>
+                  </div>
+
+                  <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/20 shrink-0 select-none">
+                    <span className="text-[9px] font-mono font-bold tracking-tighter">SO</span>
+                  </div>
                 </div>
-              </div>
-            </m.div>
-          </AnimatePresence>
+              </m.div>
+            </AnimatePresence>
+          </div>
 
           {/* MINIMALIST SLIDER CONTROLS NAVIGATION BUTTONS */}
-          <div className="flex justify-center items-center gap-4 mt-8">
+          <div className="flex justify-center items-center gap-4 mt-8 w-full">
             <button
+              type="button"
               onClick={handlePrev}
               aria-label="Previous Review"
-              className="p-3 rounded-full bg-[#141414] border border-white/5 text-white/60 hover:text-[#C9A050] hover:border-[#C9A050]/40 transition-all transform-gpu active:scale-90"
+              className="p-3 rounded-full bg-[#141414] border border-white/5 text-white/60 hover:text-[#C9A050] hover:border-[#C9A050]/30 transition-all transform-gpu active:scale-90 cursor-pointer"
             >
-              <ChevronLeft size={16} />
+              <ChevronLeft size={14} />
             </button>
             
             {/* Dot Stepper Indicator */}
-            <div className="flex gap-2">
+            <div className="flex gap-2 select-none">
               {reviews.map((_, i) => (
                 <div
                   key={i}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${i === activeIndex ? 'w-6 bg-[#C9A050]' : 'w-1.5 bg-white/10'}`}
+                  className={`h-1 rounded-full transition-all duration-300 ${i === activeIndex ? 'w-5 bg-[#C9A050]' : 'w-1 bg-white/10'}`}
                 />
               ))}
             </div>
 
             <button
+              type="button"
               onClick={handleNext}
               aria-label="Next Review"
-              className="p-3 rounded-full bg-[#141414] border border-white/5 text-white/60 hover:text-[#C9A050] hover:border-[#C9A050]/40 transition-all transform-gpu active:scale-90"
+              className="p-3 rounded-full bg-[#141414] border border-white/5 text-white/60 hover:text-[#C9A050] hover:border-[#C9A050]/30 transition-all transform-gpu active:scale-90 cursor-pointer"
             >
-              <ChevronRight size={16} />
+              <ChevronRight size={14} />
             </button>
           </div>
         </div>

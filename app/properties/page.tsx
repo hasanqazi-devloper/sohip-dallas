@@ -134,7 +134,7 @@ export default function PropertiesPage() {
       {/* RICH LUXURY ACCENTS */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C9A050]/[0.02] blur-[150px] rounded-full pointer-events-none z-0" />
 
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-24 relative z-20">
+      <div className="max-w-[2200px] mx-auto px-4 sm:px-6 md:px-24 relative z-20">
         
         {/* HEADER INTRO TITLE MODULE */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 sm:mb-16 text-left border-b border-white/5 pb-8">

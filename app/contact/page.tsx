@@ -33,7 +33,7 @@ export default function ContactPage() {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C9A050]/[0.02] blur-[150px] rounded-full pointer-events-none z-0" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#C9A050]/[0.01] blur-[130px] rounded-full pointer-events-none z-0" />
 
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-24 relative z-20">
+      <div className="max-w-[1900px] mx-auto px-4 sm:px-6 md:px-34 relative z-20">
         
         {/* 🏙️ INTRO GRID STRUCTURE */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">

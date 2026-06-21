@@ -100,7 +100,7 @@ export default function CommunitiesPage() {
       {/* BRAND RADIUS BACKGROUND LIGHT GLOW */}
       <div className="absolute top-0 left-1/4 w-[700px] h-[700px] bg-[#C9A050]/[0.02] blur-[150px] rounded-full pointer-events-none z-0" />
 
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-24 relative z-20">
+      <div className="max-w-[2200px] mx-auto px-4 sm:px-6 md:px-24 relative z-20">
         
         {/* 🏙️ INTRO DESCRIPTION HEADER BLOCK */}
         <div className="space-y-4 text-left max-w-3xl mb-16 border-b border-white/5 pb-10">

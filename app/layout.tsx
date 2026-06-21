@@ -1,6 +1,4 @@
-"use client"; // ✅ Isay top par lagana lazmi hai taake state windows run ho sakein
-
-import { useState, useEffect } from "react";
+import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar"; 
@@ -16,42 +14,31 @@ const inter = Inter({
   variable: "--font-inter" 
 });
 
+export const metadata: Metadata = {
+  title: "SOHIP Dallas Homes",
+  description: "Bespoke Property Intelligence & Luxury Presentation Matrix",
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // ✅ Window tracking context state for the layout engine
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} scroll-smooth`}>
-      <body 
-        className="bg-[#050505] text-white antialiased font-sans min-h-screen flex flex-col justify-between overflow-x-hidden"
-        suppressHydrationWarning={true}
-      >
-        {/* ✅ Passing actual missing dynamic parameters state blocks to your navbar controller */}
-        <Navbar 
-          isScrolled={isScrolled} 
-          isMenuOpen={isMenuOpen} 
-          setIsMenuOpen={setIsMenuOpen} 
-        />
+    <html 
+      lang="en" 
+      className={`${playfair.variable} ${inter.variable} scroll-smooth`}
+      style={{ scrollBehavior: 'smooth' }}
+    >
+      <body className="bg-[#050505] text-white antialiased font-sans min-h-screen flex flex-col justify-between overflow-x-hidden" suppressHydrationWarning={true}>
         
-        {/* Main Application Router Box */}
-        <div className="flex-grow w-full relative z-10">
+        {/* Global Floating Navigation */}
+        <Navbar />
+        
+        {/* ✅ Directly drops children components layout structure natively */}
+        <div className="flex-grow w-full relative z-10 block">
           {children}
         </div>
         
+        {/* Global Footer System */}
         <Footer />
+        
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ import { m } from "framer-motion";
 export default function Communities() {
   const [isMobile, setIsMobile] = useState(false);
 
-  // ✅ Client side viewport extraction to permanently fix dynamic engine memory load on mobile
+  // ✅ Client side viewport extraction to fix animation overhead seamlessly
   useEffect(() => {
     const checkDeviceWidth = () => {
       setIsMobile(window.innerWidth < 768);
@@ -26,16 +26,17 @@ export default function Communities() {
   ];
 
   return (
-    <section id="communities" className="py-20 md:py-32 px-6 md:px-24 max-w-[1400px] mx-auto scroll-mt-24 relative z-10 bg-[#000000]">
+    // ✅ FIX: Removed max-w limitation from section wrapper to allow absolute liquid full-width flow on 4K monitors
+    <section id="communities" className="py-20 md:py-32 px-6 md:px-16 lg:px-24 xl:px-32 relative z-10 bg-[#000000] w-full block">
       
-      {/* SECTION HEADER BLOCK */}
-      <div className="text-center mb-16 md:mb-24">
+      {/* SECTION HEADER BLOCK - Centered perfectly inside full container */}
+      <div className="w-full text-center mb-16 md:mb-24 space-y-4">
         <m.span 
           initial={isMobile ? { opacity: 1 } : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.3 }}
-          className="text-[10px] tracking-[0.8em] uppercase font-black block mb-4 text-[#C9A050]"
+          className="text-[10px] tracking-[0.8em] uppercase font-black block text-[#C9A050]"
         >
           ( CURATED PORTFOLIO )
         </m.span>
@@ -45,15 +46,16 @@ export default function Communities() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="text-2xl sm:text-3xl md:text-5xl font-serif tracking-wide text-white font-medium"
+          className="text-2xl sm:text-3xl md:text-5xl font-serif tracking-wide text-white font-medium uppercase"
         >
           Exclusive Neighborhoods South of 635
         </m.h2>
-        <div className="w-16 h-[1px] bg-[#C9A050]/50 mx-auto mt-6"></div>
+        <div className="w-16 h-[1px] bg-[#C9A050]/40 mx-auto mt-4"></div>
       </div>
 
-      {/* LUXURY INTERACTIVE CARDS GRID - Adaptive Layout */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* LUXURY INTERACTIVE CARDS GRID */}
+      {/* ✅ FIX: Grid layout dynamically tracks 3xl / 4xl screens to prevent horizontal breaking or squeezing */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 w-full items-stretch mx-auto">
         {neighborhoods.map((area, i) => (
           <m.div 
             key={area.id} 
@@ -61,32 +63,32 @@ export default function Communities() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.4, delay: isMobile ? 0 : i * 0.05, ease: "easeOut" }}
-            className="relative h-[380px] sm:h-[420px] md:h-[440px] rounded-xl overflow-hidden cursor-pointer shadow-2xl border border-white/5 group bg-[#161616] transform-gpu transition-all duration-500 sm:hover:-translate-y-2 will-change-transform"
+            className="relative h-[380px] sm:h-[420px] md:h-[440px] xl:h-[480px] rounded-xl overflow-hidden cursor-pointer shadow-3xl border border-white/5 group bg-[#161616] transform-gpu transition-all duration-500 sm:hover:-translate-y-2 will-change-transform w-full"
           >
             {/* FIXED OVERLAY MATRIX */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent z-10 opacity-80 sm:group-hover:opacity-40 transition-opacity duration-500" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10 transition-all duration-500 sm:group-hover:from-black sm:group-hover:via-black/90" />
             
-            {/* Parallax Smooth Zoom Staged Image Layout */}
+            {/* Parallax Smooth Zoom Image Layout */}
             <img 
               src={area.img} 
               alt={area.name} 
               decoding="async"
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 sm:group-hover:scale-105 opacity-55 sm:group-hover:opacity-75 will-change-transform" 
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 sm:group-hover:scale-105 opacity-50 sm:group-hover:opacity-70 will-change-transform" 
               loading="lazy" 
             />
             
             {/* Asset Parameter Details Block */}
             <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 sm:right-8 z-20 flex flex-col items-start space-y-3">
-              <span className="text-[#C9A050] text-[10px] font-black tracking-widest uppercase bg-black/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#C9A050]/20 shadow-md">
+              <span className="text-[#C9A050] text-[10px] font-black tracking-widest uppercase bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-[#C9A050]/20 shadow-lg font-sans">
                 {area.price}
               </span>
               
-              <h3 className="text-xl sm:text-2xl font-serif text-white tracking-wide sm:group-hover:text-[#C9A050] transition-colors duration-300 font-bold">
+              <h3 className="text-xl sm:text-2xl font-serif text-white tracking-wide sm:group-hover:text-[#C9A050] transition-colors duration-300 font-bold uppercase">
                 {area.name}
               </h3>
               
-              <p className="text-[17px] text-white font-light tracking-wide opacity-80 sm:group-hover:opacity-100 transition-opacity duration-300">
+              <p className="text-[11px] sm:text-[12px] font-mono text-white/50 tracking-[0.18em] uppercase transition-colors duration-300 sm:group-hover:text-white/80">
                 {area.listings}
               </p>
             </div>

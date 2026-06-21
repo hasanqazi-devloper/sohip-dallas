@@ -1,29 +1,44 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ⚡ PURE HARDWARE VELOCITY SMOOTH SCROLLING */
+html {
+  scroll-behavior: smooth !important;
 }
 
+/* 🏙️ ABSOLUTE RE-ENGINEERED BASE STYLES */
+body {
+  background-color: #050505; /* Solid dark luxury canvas baseline */
+  color: #ffffff;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ✨ HIGH-END LUXURY FOCUS RESETS */
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 🎛️ TAILWIND V4 FONTS CONFIGURATION BINDINGS */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ⚡ SMOOTH FADE-IN UTILITY FOR DYNAMIC GRID EXPANDERS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-html {
-  scroll-behavior: smooth !important;
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
