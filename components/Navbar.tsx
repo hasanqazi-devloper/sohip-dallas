@@ -24,12 +24,11 @@ export default function Navbar({ isScrolled, isMenuOpen, setIsMenuOpen }: Navbar
 
   return (
     <>
-      <header className="fixed top-0 left-0 w-full z-[100] transition-all duration-500">
+      <header className="fixed top-0 left-0 w-full z-[100] transition-all duration-500 transform-gpu">
         
         {/* UPPER INFO RIBBON - Seamlessly transitions height matrices */}
         <div className={`w-full bg-[#050505] text-[10px] tracking-[0.2em] uppercase text-white/50 border-b border-white/5 px-6 md:px-24 flex justify-between items-center transition-all duration-500 origin-top overflow-hidden ${isScrolled ? 'h-0 py-0 opacity-0 pointer-events-none border-none' : 'h-auto py-2.5'}`}>
           <div className="flex gap-6 items-center">
-            {/* Upgraded text strings explicitly matching #C9A050 gold standards */}
             <span className="flex items-center gap-1.5 font-medium text-white/70 hover:text-white transition-colors cursor-pointer"><Phone size={11} className="text-[#C9A050]"/> (214) 428-1121</span>
             <span className="hidden sm:inline opacity-20 text-white">|</span>
             <span className="hidden sm:flex items-center gap-1.5 font-medium text-white/70 hover:text-white transition-colors cursor-pointer"><Mail size={11} className="text-[#C9A050]"/> jennifer@sohipdallas.homes</span>
@@ -71,7 +70,7 @@ export default function Navbar({ isScrolled, isMenuOpen, setIsMenuOpen }: Navbar
           </div>
 
           <div className="flex items-center gap-6">
-            <Link href="/contact" className="hidden md:block text-[10px] tracking-[0.3em] border border-[#C9A050]/40 bg-white/5 px-6 py-3 rounded-full uppercase hover:bg-[#C9A050] hover:text-black hover:border-[#C9A050] transition-all font-black text-center text-white">
+            <Link href="/contact" className="hidden md:block text-[10px] tracking-[0.3em] border border-[#C9A050]/40 bg-white/5 px-6 py-3 rounded-full uppercase hover:bg-[#C9A050] hover:text-black hover:border-[#C9A050] transition-all font-black text-center text-white transform-gpu active:scale-95">
               Gain VIP Access
             </Link>
             <button className="lg:hidden text-white p-2 outline-none" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -81,36 +80,31 @@ export default function Navbar({ isScrolled, isMenuOpen, setIsMenuOpen }: Navbar
         </div>
       </header>
 
-      {/* ⚡ ADVANCED MOTION OVERLAY DRAWERS */}
+      {/* ⚡ ADVANCED HARDWARE-ACCELERATED MOBILE DRAWER */}
       <AnimatePresence>
         {isMenuOpen && (
           <m.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-[110] bg-[#0D0D0D]/98 backdrop-blur-xl flex flex-col items-center justify-center gap-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="fixed inset-0 z-[110] bg-[#0D0D0D]/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8 transform-gpu"
           >
             <button className="absolute top-8 right-8 text-white p-2 outline-none" onClick={() => setIsMenuOpen(false)}>
               <X size={30} className="text-[#C9A050]" />
             </button>
-            {navItems.map((item, i) => {
+            {navItems.map((item) => {
               const isMobileActive = pathname === item.path;
               return (
-                <m.div
-                  key={item.path}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08, duration: 0.5 }}
-                >
+                <div key={item.path} className="overflow-hidden">
                   <Link 
                     href={item.path} 
                     onClick={() => setIsMenuOpen(false)} 
-                    className={`text-2xl sm:text-3xl font-serif italic tracking-wide block transition-colors ${isMobileActive ? 'text-[#C9A050] font-bold' : 'text-white/60 hover:text-white'}`}
+                    className={`text-2xl sm:text-3xl font-serif italic tracking-wide block transition-colors py-2 ${isMobileActive ? 'text-[#C9A050] font-bold' : 'text-white/60 hover:text-white'}`}
                   >
                     {item.name}
                   </Link>
-                </m.div>
+                </div>
               );
             })}
           </m.div>

@@ -6,28 +6,28 @@ import { Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 export default function ContactForm() {
   return (
     // Pure Obsidian Black Surface alignment for the final action gate
-    <section id="contact" className="py-24 md:py-32 bg-[#0D0D0D] border-t border-white/5 scroll-mt-24 relative z-10">
-      {/* ✅ Gap grid setting optimized from gap-16 to gap-12 lg:gap-20 for absolute horizontal breathing room */}
+    <section id="contact" className="py-16 md:py-32 bg-[#0D0D0D] border-t border-white/5 scroll-mt-24 relative z-10">
+      {/* Gap grid setting optimized for fluid responsive layout matching */}
       <div className="max-w-[1200px] mx-auto px-6 md:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-stretch">
         
         {/* CORPORATE INFORMATION LAYER */}
-        {/* h-full flex flex-col justify-between keeps content items structurally pinned to top and bottom bounds */}
         <div className="lg:col-span-5 flex flex-col justify-between space-y-8 text-left py-2">
           <div className="space-y-6">
             <m.span 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.3 }}
               className="text-[10px] tracking-[0.5em] text-[#C9A050] font-black uppercase block"
             >
               ( PRIVACY & DATA NETWORK )
             </m.span>
             
             <m.h2 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
               className="text-3xl sm:text-4xl md:text-6xl font-serif italic text-white font-medium leading-none"
             >
               Connect Privately.
@@ -36,8 +36,8 @@ export default function ContactForm() {
             <m.p 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.4 }}
               className="text-[17px] text-white font-light leading-relaxed opacity-85 max-w-sm"
             >
               Unlock structured local analytics, premium off-market listing updates, and private DFW investment vectors direct to your corporate network hub.
@@ -67,12 +67,13 @@ export default function ContactForm() {
 
         {/* INPUT VALIDATION CONTROL HUB FORM */}
         <m.form 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
+          // Fast timing sequence optimized for flawless mobile field response
+          transition={{ duration: 0.4, ease: "easeOut" }}
           onSubmit={(e) => e.preventDefault()} 
-          className="lg:col-span-7 space-y-8 bg-[#141414] p-8 md:p-12 border border-white/5 rounded-2xl shadow-2xl relative flex flex-col justify-center overflow-hidden group"
+          className="lg:col-span-7 space-y-8 bg-[#141414] p-8 md:p-12 border border-white/5 rounded-2xl shadow-2xl relative flex flex-col justify-center overflow-hidden group transform-gpu"
         >
           {/* Subtle inside tracking animation border updated to new brand hex layout line */}
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#C9A050]/20 to-transparent" />
@@ -102,7 +103,8 @@ export default function ContactForm() {
           </div>
 
           <div className="pt-4">
-            <button className="w-full bg-[#C9A050] text-black py-5 tracking-[0.4em] font-black text-xs hover:bg-white transition-colors uppercase rounded-full shadow-xl transform active:scale-98 duration-300">
+            {/* Pure CSS hardware optimization applied to interactive click state */}
+            <button className="w-full bg-[#C9A050] text-black py-5 tracking-[0.4em] font-black text-xs hover:bg-white transition-colors uppercase rounded-full shadow-xl active:scale-[0.98] duration-300 transform-gpu">
               Gain VIP Access Matrix
             </button>
           </div>
