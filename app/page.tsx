@@ -8,7 +8,7 @@ import SohippReset from "@/components/SohippReset";
 import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
 import ContactForm from "@/components/ContactForm";
-
+import WhatsAppButton from "@/components/WhatsAppButton"; // ✅ Imported
 export default function SohipEliteFinal() {
   return (
     <LazyMotion features={domMax}>
@@ -22,7 +22,7 @@ export default function SohipEliteFinal() {
         <Testimonials />
         <About />
         <ContactForm />
-        
+        <WhatsAppButton/>
       </main>
     </LazyMotion>
   );

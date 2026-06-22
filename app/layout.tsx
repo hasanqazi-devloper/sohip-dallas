@@ -3,7 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar"; 
 import Footer from "@/components/Footer";
-
+import WhatsAppButton from "@/components/WhatsAppButton"; // ✅ Imported
 // 🏙️ Pure Unified Geometric Premium Font Engine
 const montserrat = Montserrat({ 
   subsets: ["latin"],
@@ -14,6 +14,12 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "SOHIP Dallas Homes",
   description: "Bespoke Property Intelligence & Luxury Presentation Matrix",
+  // 👑 Site Icons Configuration Engine
+  icons: {
+    // icon: "/favicon.ico", // public/favicon.ico wala path
+    shortcut: "/sohip-dallas-logo-main.png", // public/icon.png (Optional)
+    apple: "/apple-touch-icon.png", // public/apple-touch-icon.png Apple devices ke liye (Optional)
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
