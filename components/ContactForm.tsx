@@ -2,10 +2,19 @@
 
 import { useEffect, useState } from "react";
 import { m } from "framer-motion";
-import { Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { Mail, MapPin, Phone, ShieldCheck, Loader2 } from "lucide-react";
+// ⚠️ Apne Supabase client ka sahi path yahan check karlein:
+import { supabase } from "@/app/lib/supabase"; 
 
 export default function ContactForm() {
   const [isMobile, setIsMobile] = useState(false);
+  
+  // Form States
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{ success: boolean; msg: string } | null>(null);
 
   // ✅ Viewport tracking to protect layout runtime computation flow flawlessly
   useEffect(() => {
@@ -16,6 +25,32 @@ export default function ContactForm() {
     window.addEventListener("resize", checkDeviceWidth);
     return () => window.removeEventListener("resize", checkDeviceWidth);
   }, []);
+
+  // 🚀 Database Submission Handler
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus(null);
+
+    try {
+      // ⚠️ Apni Supabase table ka naam 'leads' ya jo bhi aapne rakha hai woh check karlein
+      const { error } = await supabase
+        .from("leads") 
+        .insert([{ name, email, message }]);
+
+      if (error) throw error;
+
+      setStatus({ success: true, msg: "ACCESS MATRIX TRANSMITTED SUCCESSFULLY!" });
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (err: any) {
+      console.error(err);
+      setStatus({ success: false, msg: "TRANSMISSION FAILED. TRY AGAIN." });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     // Pure Obsidian Black Surface alignment for the final action gate
@@ -88,7 +123,7 @@ export default function ContactForm() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          onSubmit={(e) => e.preventDefault()} 
+          onSubmit={handleSubmit} 
           className="lg:col-span-7 space-y-6 bg-[#141414] bg-[radial-gradient(circle_at_top_left,rgba(201,160,80,0.03),transparent_45%)] p-6 sm:p-10 md:p-12 border border-white/5 focus-within:border-[#C9A050]/30 rounded-2xl shadow-3xl relative flex flex-col justify-center overflow-hidden group transform-gpu w-full text-left font-sans transition-all duration-500"
         >
           {/* Subtle inside tracking animation border updated to new brand hex layout line */}
@@ -99,6 +134,8 @@ export default function ContactForm() {
             <input 
               type="text" 
               required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="ENTER YOUR FULL LEGAL NAME..." 
               className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-[0.2em] font-bold placeholder-white/45 font-sans" 
             />
@@ -109,6 +146,8 @@ export default function ContactForm() {
             <input 
               type="email" 
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="ENTER SECURE EMAIL ADDRESS..." 
               className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-[0.2em] font-bold placeholder-white/45 font-sans" 
             />
@@ -119,13 +158,31 @@ export default function ContactForm() {
             <textarea 
               placeholder="DESCRIBE THE PARAMETERS OF YOUR ACQUISITION OR ASSET INTEL NEEDS..." 
               rows={4} 
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               className="w-full bg-transparent border-b border-white/10 py-4 outline-none text-white focus:border-[#C9A050] transition-colors uppercase text-xs tracking-[0.2em] font-bold placeholder-white/45 resize-none font-sans leading-relaxed" 
             />
           </div>
 
+          {status && (
+            <div className={`text-xs font-mono tracking-wider font-bold ${status.success ? "text-emerald-400" : "text-rose-500"}`}>
+              {status.msg}
+            </div>
+          )}
+
           <div className="pt-4 w-full">
-            <button className="w-full bg-[#C9A050] text-black py-5 tracking-[0.35em] font-black text-xs hover:bg-white transition-colors uppercase rounded-full shadow-2xl sm:active:scale-[0.98] duration-300 transform-gpu cursor-pointer font-sans">
-              Transmit VIP Access Matrix
+            <button 
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#C9A050] text-black py-5 tracking-[0.35em] font-black text-xs hover:bg-white disabled:bg-gray-600 disabled:text-gray-400 transition-colors uppercase rounded-full shadow-2xl sm:active:scale-[0.98] duration-300 transform-gpu cursor-pointer font-sans flex items-center justify-center gap-2"
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="animate-spin" size={14} /> TRANSMITTING...
+                </>
+              ) : (
+                "Transmit VIP Access Matrix"
+              )}
             </button>
           </div>
         </m.form>
