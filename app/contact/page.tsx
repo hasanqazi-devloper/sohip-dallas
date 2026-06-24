@@ -25,17 +25,16 @@ export default function ContactPage() {
 
     try {
       // 🔒 Push the dataset directly into Supabase 'leads' table nodes
-      const { error } = await supabase
-        .from("leads")
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            interest: formData.interest,
-            message: formData.message,
-          },
-        ]);
+     // Website ke Contact Form wale component mein insert query aisi honi chahiye:
+const { error } = await supabase.from('leads').insert([
+  {
+    name: formData.name,
+    email: formData.email,
+    phone: formData.phone,
+    property_interest: formData.interest, // 👈 Website ka interest database ke property_interest mein map karo!
+    status: 'New'
+  }
+]);
 
       if (error) throw error;
 
